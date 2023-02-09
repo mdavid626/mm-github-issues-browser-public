@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { parseISO, format } from 'date-fns';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -9,8 +10,14 @@ const stateLabels: Record<IssuesQueryItem['state'], string> = {
   OPEN: 'open',
 };
 
-const IssuesItem: React.FC<{ issue: IssuesQueryItem }> = ({ issue }) => (
-  <Link to={`/issue/${issue.id}`} className="IssuesItem">
+const IssuesItem: React.FC<{ issue: IssuesQueryItem; className?: string }> = ({
+  issue,
+  className,
+}) => (
+  <Link
+    to={`/issue/${issue.id}`}
+    className={classnames('IssuesItem', className)}
+  >
     <div className="IssuesItem-titleAndState">
       <div className="IssuesItem-title">{issue.title}</div>
       <div

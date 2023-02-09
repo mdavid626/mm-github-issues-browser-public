@@ -18,7 +18,11 @@ const IssuesPage = () => {
         <div className="IssuesPage-content">
           <div className="IssuesPage-issues">
             {issues?.repository.issues.edges.map(({ node: issue }) => (
-              <IssuesItem key={issue.id} issue={issue} />
+              <IssuesItem
+                key={issue.id}
+                issue={issue}
+                className="IssuesPage-issue"
+              />
             ))}
           </div>
         </div>
