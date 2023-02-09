@@ -1,1 +1,1 @@
-# mediamarkt-task
+# MediaMarkt interview task
