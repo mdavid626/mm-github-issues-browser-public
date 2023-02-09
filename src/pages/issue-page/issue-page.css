@@ -16,3 +16,7 @@
   flex: 1;
   padding: 0 var(--space1);
 }
+
+.IssuePage-back {
+  cursor: pointer;
+}
