@@ -1,18 +1,18 @@
-.IssuesItem {
+.IssueItem {
   color: #222;
 }
 
-.IssuesItem-titleAndState {
+.IssueItem-titleAndState {
   display: flex;
   gap: var(--space1);
   align-items: center;
 }
 
-.IssuesItem-title {
+.IssueItem-title {
   font-size: 16px;
 }
 
-.IssuesItem-state {
+.IssueItem-state {
   padding: 4px;
   border-radius: 3px;
   background-color: red;
@@ -21,16 +21,21 @@
   line-height: 14px;
 }
 
-.IssuesItem-state--closed {
+.IssueItem-state--closed {
   background-color: #2da44e;
 }
 
-.IssuesItem-state--open {
+.IssueItem-state--open {
   background-color: #d4c5f9;
 }
 
-.IssuesItem-detail {
+.IssueItem-detail {
   display: flex;
   gap: var(--space1);
   font-size: 12px;
+}
+
+.IssueItem-body {
+  margin: var(--space1) 0 0 0;
+  white-space: pre-wrap;
 }

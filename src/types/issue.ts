@@ -17,3 +17,22 @@ export type IssuesQueryResult = {
     };
   };
 };
+
+export type IssueQueryItem = {
+  id: string;
+  createdAt: string;
+  title: string;
+  state: 'OPEN' | 'CLOSED';
+  number: number;
+  url: string;
+  bodyText: string;
+  author: {
+    login: string;
+  };
+};
+
+export type IssueQueryResult = {
+  repository: {
+    issue: IssueQueryItem;
+  };
+};

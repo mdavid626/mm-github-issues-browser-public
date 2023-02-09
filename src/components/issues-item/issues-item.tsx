@@ -1,7 +1,5 @@
-import classnames from 'classnames';
 import { parseISO, format } from 'date-fns';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { IssuesQueryItem } from '../../types/issue';
 import './issues-item.css';
 
@@ -10,14 +8,8 @@ const stateLabels: Record<IssuesQueryItem['state'], string> = {
   OPEN: 'open',
 };
 
-const IssuesItem: React.FC<{ issue: IssuesQueryItem; className?: string }> = ({
-  issue,
-  className,
-}) => (
-  <Link
-    to={`/issue/${issue.id}`}
-    className={classnames('IssuesItem', className)}
-  >
+const IssuesItem: React.FC<{ issue: IssuesQueryItem }> = ({ issue }) => (
+  <div className="IssuesItem">
     <div className="IssuesItem-titleAndState">
       <div className="IssuesItem-title">{issue.title}</div>
       <div
@@ -31,7 +23,7 @@ const IssuesItem: React.FC<{ issue: IssuesQueryItem; className?: string }> = ({
       <div>{format(parseISO(issue.createdAt), 'dd.MM.yyyy HH:mm')}</div>
       <div>{issue.author.login}</div>
     </div>
-  </Link>
+  </div>
 );
 
 export default IssuesItem;
