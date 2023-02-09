@@ -14,17 +14,24 @@ const Header: React.FC = () => {
     <div className="Header">
       <div className="Header-title">MediaMarkt Interview Task</div>
       <div className="Header-navigation">
-        {links.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={classnames('Header-link', {
-              'Header-selectedLink': link.path === location.pathname,
-            })}
-          >
-            {link.title}
-          </Link>
-        ))}
+        <Link
+          to="/"
+          className={classnames('Header-link', {
+            'Header-selectedLink':
+              location.pathname === '/' ||
+              location.pathname.startsWith('/issue'),
+          })}
+        >
+          React GitHub Issues
+        </Link>
+        <Link
+          to="/about"
+          className={classnames('Header-link', {
+            'Header-selectedLink': location.pathname === '/about',
+          })}
+        >
+          About
+        </Link>
       </div>
     </div>
   );

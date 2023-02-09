@@ -13,7 +13,7 @@ describe('[Acceptance] about-page', () => {
       await screen.findByText('Simple React app created for MediaMarkt')
     ).toBeVisible();
     expect(screen.getByText('MediaMarkt Interview Task')).toBeVisible();
-    expect(screen.getByText('GitHub Issues')).toBeVisible();
+    expect(screen.getByText('React GitHub Issues')).toBeVisible();
     expect(screen.getByText('About')).toBeVisible();
     expect(screen.getByText('Created by:')).toBeVisible();
     expect(screen.getByText('Dávid Molnár')).toBeVisible();

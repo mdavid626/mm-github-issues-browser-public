@@ -17,7 +17,7 @@ exports[`header should render 1`] = `
         class="Header-link Header-selectedLink"
         href="/"
       >
-        GitHub Issues
+        React GitHub Issues
       </a>
       <a
         class="Header-link"
