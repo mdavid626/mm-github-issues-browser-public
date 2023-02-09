@@ -1,8 +1,10 @@
+export type IssueState = 'OPEN' | 'CLOSED';
+
 export type IssuesQueryItem = {
   id: string;
   createdAt: string;
   title: string;
-  state: 'OPEN' | 'CLOSED';
+  state: IssueState;
   number: number;
   url: string;
   author: {
@@ -22,7 +24,7 @@ export type IssueQueryItem = {
   id: string;
   createdAt: string;
   title: string;
-  state: 'OPEN' | 'CLOSED';
+  state: IssueState;
   number: number;
   url: string;
   bodyText: string;

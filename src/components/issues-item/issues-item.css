@@ -12,23 +12,6 @@
   font-size: 16px;
 }
 
-.IssuesItem-state {
-  padding: 4px;
-  border-radius: 3px;
-  background-color: red;
-  color: #f2f2f2;
-  font-size: 12px;
-  line-height: 14px;
-}
-
-.IssuesItem-state--closed {
-  background-color: #2da44e;
-}
-
-.IssuesItem-state--open {
-  background-color: #d4c5f9;
-}
-
 .IssuesItem-detail {
   display: flex;
   gap: var(--space1);

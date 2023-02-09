@@ -1,0 +1,16 @@
+.IssueStateBadge {
+  padding: 4px;
+  border-radius: 3px;
+  background-color: var(--secondary-color);
+  color: #f2f2f2;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.IssueStateBadge--closed {
+  background-color: #2da44e;
+}
+
+.IssueStateBadge--open {
+  background-color: #d4c5f9;
+}
