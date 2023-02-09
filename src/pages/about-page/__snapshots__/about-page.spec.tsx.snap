@@ -14,7 +14,7 @@ exports[`about-page should render 1`] = `
       <div
         class="AboutPage-description"
       >
-        Simple React app created for Fides
+        Simple React app created for MediaMarkt
       </div>
       <div>
         Created by: 
@@ -25,7 +25,7 @@ exports[`about-page should render 1`] = `
         </a>
       </div>
       <a
-        href="https://github.com/mdavid626/fides-sample-app"
+        href="https://github.com/mdavid626/mediamarkt-task"
       >
         Source Code
       </a>
