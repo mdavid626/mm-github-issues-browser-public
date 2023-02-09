@@ -1,0 +1,17 @@
+.IssuesPage {
+  margin: var(--page-margin);
+  padding: var(--page-padding);
+  max-width: var(--page-width);
+  background-color: var(--page-background);
+  min-height: var(--page-min-height);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space2);
+}
+
+.IssuesPage-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space2);
+  flex: 1;
+}
