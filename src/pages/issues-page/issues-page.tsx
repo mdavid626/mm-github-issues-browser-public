@@ -1,37 +1,28 @@
-import { useQuery, gql } from '@apollo/client';
 import React from 'react';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
+import IssuesItem from '../../components/issues-item/issues-item';
+import PageLoader from '../../components/page-loader/page-loader';
+import { useIssues } from '../../hooks/issue-hooks/issue-hooks';
 import './issues-page.css';
 
-const GET_LOCATIONS = gql`
-  query {
-    repository(owner: "octocat", name: "Hello-World") {
-      issues(last: 20, states: CLOSED) {
-        edges {
-          node {
-            title
-            url
-            labels(first: 5) {
-              edges {
-                node {
-                  name
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const IssuesPage = () => {
-  const { data } = useQuery(GET_LOCATIONS);
+  const [issues, areIssuesFetching, issuesError] = useIssues();
   return (
     <div className="IssuesPage">
       <Header />
-      <div className="IssuesPage-content">{JSON.stringify(data)}</div>
+      <PageLoader
+        isLoading={areIssuesFetching}
+        errorMessage={issuesError?.message}
+      >
+        <div className="IssuesPage-content">
+          <div className="IssuesPage-issues">
+            {issues?.repository.issues.edges.map(({ node: issue }) => (
+              <IssuesItem key={issue.id} issue={issue} />
+            ))}
+          </div>
+        </div>
+      </PageLoader>
       <Footer />
     </div>
   );

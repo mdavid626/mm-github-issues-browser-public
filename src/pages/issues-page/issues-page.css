@@ -15,3 +15,9 @@
   gap: var(--space2);
   flex: 1;
 }
+
+.IssuesPage-issues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space1);
+}
