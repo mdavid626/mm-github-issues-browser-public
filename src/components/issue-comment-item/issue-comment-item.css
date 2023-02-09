@@ -1,0 +1,9 @@
+.IssueCommentItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.IssueCommentItem-detail {
+  display: flex;
+  gap: var(--space1);
+}

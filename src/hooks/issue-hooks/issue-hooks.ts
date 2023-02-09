@@ -48,6 +48,18 @@ const issueQuery = gql`
         author {
           login
         }
+        comments(last: 20) {
+          edges {
+            node {
+              bodyText
+              author {
+                login
+              }
+              createdAt
+              id
+            }
+          }
+        }
       }
     }
   }

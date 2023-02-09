@@ -20,6 +20,15 @@ export type IssuesQueryResult = {
   };
 };
 
+export type IssueComment = {
+  id: string;
+  bodyText: string;
+  author: {
+    login: string;
+  };
+  createdAt: string;
+};
+
 export type IssueQueryItem = {
   id: string;
   createdAt: string;
@@ -30,6 +39,11 @@ export type IssueQueryItem = {
   bodyText: string;
   author: {
     login: string;
+  };
+  comments: {
+    edges: {
+      node: IssueComment;
+    }[];
   };
 };
 
