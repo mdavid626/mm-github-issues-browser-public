@@ -1,14 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMatches, useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import IssueItem from '../../components/issue-item/issue-item';
 import PageLoader from '../../components/page-loader/page-loader';
-import { useIssue } from '../../hooks/issue-hooks/issue-hooks';
+import { useIssue, useIssueNumber } from '../../hooks/issue-hooks/issue-hooks';
 import './issue-page.css';
 
 const IssuePage = () => {
-  const [issue, isIssueFetching, issueError] = useIssue();
+  const issueNumber = useIssueNumber();
+  const [issue, isIssueFetching, issueError] = useIssue(issueNumber);
   const navigate = useNavigate();
   return (
     <div className="IssuePage">

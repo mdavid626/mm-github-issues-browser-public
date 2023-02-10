@@ -20,10 +20,11 @@ const IssuesPage: React.FC = () => {
           <div className="IssuesPage-issues">
             {issues?.repository.issues.edges.map(({ node: issue }) => (
               <Link
-                to={`/issue/${encodeURIComponent(issue.id)}`}
+                to={`/issue/${encodeURIComponent(issue.number)}`}
                 className="IssuesPage-issue"
+                key={issue.id}
               >
-                <IssuesItem key={issue.id} issue={issue} />
+                <IssuesItem issue={issue} />
               </Link>
             ))}
           </div>

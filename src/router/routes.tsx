@@ -10,8 +10,8 @@ const ErrorPage: React.FC = () => {
 
 const Routes: React.FC = () => (
   <RouterRoutes>
-    <Route path="/issue/:issueId" element={<IssuePage />} />
-    <Route path="/" element={<IssuesPage />} />w
+    <Route path="/issue/:issueNumber" element={<IssuePage />}  />
+    <Route path="/" element={<IssuesPage />} />
     <Route path="/about" element={<AboutPage />} />
     <Route path="/error" element={<ErrorPage />} />
     <Route path="*" element={<Navigate to="/" replace />} />

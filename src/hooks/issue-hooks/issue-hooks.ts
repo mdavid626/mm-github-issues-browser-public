@@ -1,5 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
+import { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
 
 const issuesQuery = gql`
@@ -34,9 +36,9 @@ export const useIssues = (): [
 };
 
 const issueQuery = gql`
-  {
+  query Issue($issueNumber: Int!) {
     repository(owner: "facebook", name: "react") {
-      issue(number: 26077) {
+      issue(number: $issueNumber) {
         id
         createdAt
         title
@@ -65,11 +67,21 @@ const issueQuery = gql`
   }
 `;
 
-export const useIssue = (): [
-  IssueQueryResult | undefined,
-  boolean,
-  ApolloError | undefined
-] => {
-  const { data, loading, error } = useQuery<IssueQueryResult>(issueQuery);
+export const useIssue = (
+  issueNumber: number
+): [IssueQueryResult | undefined, boolean, ApolloError | undefined] => {
+  const { data, loading, error } = useQuery<IssueQueryResult>(issueQuery, {
+    variables: {
+      issueNumber,
+    },
+  });
   return [data, loading, error];
+};
+
+export const useIssueNumber = () => {
+  const location = useLocation();
+  return useMemo(
+    () => parseInt(location.pathname.replace('/issue/', ''), 10),
+    [location.pathname]
+  );
 };

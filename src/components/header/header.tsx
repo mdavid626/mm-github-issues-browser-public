@@ -3,11 +3,6 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 
-const links = [
-  { path: '/', title: 'GitHub Issues' },
-  { path: '/about', title: 'About' },
-];
-
 const Header: React.FC = () => {
   const location = useLocation();
   return (
