@@ -1,3 +1,5 @@
+import { PageInfo } from './pagination';
+
 export type IssueState = 'OPEN' | 'CLOSED';
 
 export type IssuesQueryItem = {
@@ -15,7 +17,8 @@ export type IssuesQueryItem = {
 export type IssuesQueryResult = {
   repository: {
     issues: {
-      edges: { node: IssuesQueryItem }[];
+      nodes: IssuesQueryItem[];
+      pageInfo: PageInfo;
     };
   };
 };

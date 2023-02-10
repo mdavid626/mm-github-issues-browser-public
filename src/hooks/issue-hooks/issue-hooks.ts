@@ -5,21 +5,30 @@ import { useLocation } from 'react-router-dom';
 import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
 
 const issuesQuery = gql`
-  query {
+  query getIssues($cursor: String) {
     repository(owner: "facebook", name: "react") {
-      issues(last: 20) {
-        edges {
-          node {
-            id
-            createdAt
-            title
-            state
-            number
-            url
-            author {
-              login
-            }
+      id
+      issues(
+        first: 10
+        after: $cursor
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
+        nodes {
+          id
+          createdAt
+          title
+          state
+          number
+          url
+          author {
+            login
           }
+        }
+        pageInfo {
+          hasNextPage
+          startCursor
+          endCursor
+          hasPreviousPage
         }
       }
     }
@@ -29,15 +38,24 @@ const issuesQuery = gql`
 export const useIssues = (): [
   IssuesQueryResult | undefined,
   boolean,
-  ApolloError | undefined
+  ApolloError | undefined,
+  (args: { variables: { cursor: string | null } }) => void
 ] => {
-  const { data, loading, error } = useQuery<IssuesQueryResult>(issuesQuery);
-  return [data, loading, error];
+  const { data, loading, error, fetchMore } = useQuery<IssuesQueryResult>(
+    issuesQuery,
+    {
+      variables: {
+        cursor: null,
+      },
+    }
+  );
+  return [data, loading, error, fetchMore];
 };
 
 const issueQuery = gql`
-  query Issue($issueNumber: Int!) {
+  query getIssue($issueNumber: Int!) {
     repository(owner: "facebook", name: "react") {
+      id
       issue(number: $issueNumber) {
         id
         createdAt

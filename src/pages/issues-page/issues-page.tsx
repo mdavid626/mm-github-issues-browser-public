@@ -8,7 +8,7 @@ import { useIssues } from '../../hooks/issue-hooks/issue-hooks';
 import './issues-page.css';
 
 const IssuesPage: React.FC = () => {
-  const [issues, areIssuesFetching, issuesError] = useIssues();
+  const [issues, areIssuesFetching, issuesError, fetchMore] = useIssues();
   return (
     <div className="IssuesPage">
       <Header />
@@ -18,7 +18,7 @@ const IssuesPage: React.FC = () => {
       >
         <div className="IssuesPage-content">
           <div className="IssuesPage-issues">
-            {issues?.repository.issues.edges.map(({ node: issue }) => (
+            {issues?.repository.issues.nodes.map((issue) => (
               <Link
                 to={`/issue/${encodeURIComponent(issue.number)}`}
                 className="IssuesPage-issue"
@@ -28,6 +28,20 @@ const IssuesPage: React.FC = () => {
               </Link>
             ))}
           </div>
+          {issues?.repository.issues.pageInfo.hasNextPage && (
+            <div
+              onClick={() =>
+                fetchMore({
+                  variables: {
+                    cursor: issues.repository.issues.pageInfo.endCursor,
+                  },
+                })
+              }
+              className="IssuesPage-fetchMore"
+            >
+              Fetch More
+            </div>
+          )}
         </div>
       </PageLoader>
       <Footer />

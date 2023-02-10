@@ -6,10 +6,28 @@ import { HashRouter } from 'react-router-dom';
 import ErrorBoundary from './components/error-boundary/error-boundary';
 import './index.css';
 import Routes from './router/routes';
+import { IssuesQueryResult } from './types/issue';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Repository: {
+        fields: {
+          issues: {
+            keyArgs: false,
+            merge: (
+              existing: IssuesQueryResult['repository']['issues'],
+              incoming: IssuesQueryResult['repository']['issues']
+            ) => ({
+              ...incoming,
+              nodes: [...(existing?.nodes ?? []), ...(incoming.nodes ?? [])],
+            }),
+          },
+        },
+      },
+    },
+  }),
   headers: {
     Authorization: `Bearer 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`,
   },
