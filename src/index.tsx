@@ -12,17 +12,19 @@ const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   cache: new InMemoryCache({
     typePolicies: {
-      Repository: {
+      Query: {
         fields: {
-          issues: {
-            keyArgs: ['states'],
+          search: {
+            keyArgs: ['query'],
             merge: (
-              existing: IssuesQueryResult['repository']['issues'],
-              incoming: IssuesQueryResult['repository']['issues']
-            ) => ({
-              ...incoming,
-              nodes: [...(existing?.nodes ?? []), ...(incoming.nodes ?? [])],
-            }),
+              existing: IssuesQueryResult['search'] | undefined,
+              incoming: IssuesQueryResult['search']
+            ) => {
+              return {
+                ...incoming,
+                nodes: [...(existing?.nodes ?? []), ...(incoming?.nodes ?? [])],
+              };
+            },
           },
         },
       },
@@ -31,7 +33,9 @@ const client = new ApolloClient({
           comments: {
             keyArgs: false,
             merge: (
-              existing: IssueQueryResult['repository']['issue']['comments'],
+              existing:
+                | IssueQueryResult['repository']['issue']['comments']
+                | undefined,
               incoming: IssueQueryResult['repository']['issue']['comments']
             ) => ({
               ...incoming,

@@ -2,17 +2,18 @@ import { useQuery } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
 import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Filters, StateFilter } from '../../types/filters';
-import {
-  IssueQueryResult,
-  IssuesQueryResult,
-  IssueState,
-} from '../../types/issue';
-import { GetIssuesQuery, GetIssueQuery, GetCommentsQuery } from './queries';
+import { Filters } from '../../types/filters';
+import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
+import { SearchForIssues, GetIssueQuery, GetCommentsQuery } from './queries';
 
-const stateFilterMap: Record<StateFilter, IssueState> = {
-  open: 'OPEN',
-  closed: 'CLOSED',
+const getSearch = (filters: Filters) => {
+  const search = filters.search
+    ? `(in:title ${filters.search} OR in:body ${filters.search})`
+    : '';
+  const state = filters.state ? `state:${filters.state}` : '';
+  return ['repo:facebook/react', 'type:issue', state, search]
+    .filter((item) => item)
+    .join(' ');
 };
 
 export const useIssues = (
@@ -28,10 +29,10 @@ export const useIssues = (
     loading,
     error,
     fetchMore: queryFetchMore,
-  } = useQuery<IssuesQueryResult>(GetIssuesQuery, {
+  } = useQuery<IssuesQueryResult>(SearchForIssues, {
     variables: {
       cursor: null,
-      states: stateFilterMap[filters.state!] || null,
+      search: getSearch(filters),
     },
     notifyOnNetworkStatusChange: true,
   });
@@ -39,7 +40,7 @@ export const useIssues = (
     () =>
       queryFetchMore({
         variables: {
-          cursor: data?.repository.issues.pageInfo.endCursor,
+          cursor: data?.search.pageInfo.endCursor,
         },
       }),
     [queryFetchMore, data]

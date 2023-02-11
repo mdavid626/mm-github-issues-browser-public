@@ -15,12 +15,10 @@ export type IssuesQueryItem = {
 };
 
 export type IssuesQueryResult = {
-  repository: {
-    issues: {
-      nodes: IssuesQueryItem[];
-      pageInfo: PageInfo;
-      totalCount: number;
-    };
+  search: {
+    issueCount: number;
+    nodes: IssuesQueryItem[];
+    pageInfo: PageInfo;
   };
 };
 

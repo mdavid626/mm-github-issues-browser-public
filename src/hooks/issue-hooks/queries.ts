@@ -1,16 +1,11 @@
 import { gql } from '@apollo/client';
 
-export const GetIssuesQuery = gql`
-  query getIssues($cursor: String, $states: [IssueState!]) {
-    repository(owner: "facebook", name: "react") {
-      id
-      issues(
-        first: 10
-        after: $cursor
-        states: $states
-        orderBy: { field: CREATED_AT, direction: DESC }
-      ) {
-        nodes {
+export const SearchForIssues = gql`
+  query searchForIssues($cursor: String, $search: String!) {
+    search(query: $search, after: $cursor, type: ISSUE, first: 10) {
+      issueCount
+      nodes {
+        ... on Issue {
           id
           createdAt
           title
@@ -21,12 +16,10 @@ export const GetIssuesQuery = gql`
             login
           }
         }
-        pageInfo {
-          hasNextPage
-          startCursor
-          endCursor
-        }
-        totalCount
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }
@@ -58,9 +51,7 @@ export const GetIssueQuery = gql`
             }
           }
           pageInfo {
-            hasPreviousPage
             hasNextPage
-            startCursor
             endCursor
           }
           totalCount
@@ -90,9 +81,7 @@ export const GetCommentsQuery = gql`
             }
           }
           pageInfo {
-            hasPreviousPage
             hasNextPage
-            startCursor
             endCursor
           }
           totalCount

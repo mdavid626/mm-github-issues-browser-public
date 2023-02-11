@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Filters, StateFilter } from '../../types/filters';
 import './filters-bar.css';
 
@@ -6,6 +6,7 @@ const FiltersBar: React.FC<{
   filters: Filters;
   setFilters: (newFilters: Filters) => void;
 }> = ({ filters, setFilters }) => {
+  const [search, setSearch] = useState(filters.search);
   return (
     <div className="FiltersBar">
       <select
@@ -22,12 +23,29 @@ const FiltersBar: React.FC<{
         <option value="closed">Closed</option>
       </select>
       <input
-        value={filters.search}
-        onChange={(e) =>
-          setFilters({ ...filters, search: e.currentTarget.value })
-        }
+        value={search}
+        onChange={(e) => setSearch(e.currentTarget.value)}
         placeholder="Search..."
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setFilters({
+              ...filters,
+              search,
+            });
+          }
+        }}
       />
+      <button
+        type="button"
+        onClick={() =>
+          setFilters({
+            ...filters,
+            search,
+          })
+        }
+      >
+        Search
+      </button>
     </div>
   );
 };

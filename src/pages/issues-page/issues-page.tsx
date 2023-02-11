@@ -20,19 +20,19 @@ const IssuesPage: React.FC = () => {
           <FiltersBar filters={filters} setFilters={setFilters} />
           {queryResult && (
             <div className="IssuesPage-totalCount">
-              Total Issues: {queryResult.repository.issues.totalCount}
+              Total Issues: {queryResult.search.issueCount}
             </div>
           )}
         </div>
         <PageLoader isLoading={!queryResult} errorMessage={queryError?.message}>
           {() => {
             const {
-              repository: { issues },
+              search: { nodes: issues, pageInfo },
             } = queryResult!;
             return (
               <>
                 <div className="IssuesPage-issues">
-                  {issues.nodes.map((issue) => (
+                  {issues.map((issue) => (
                     <Link
                       to={`/issue/${encodeURIComponent(issue.number)}`}
                       className="IssuesPage-issue"
@@ -42,7 +42,7 @@ const IssuesPage: React.FC = () => {
                     </Link>
                   ))}
                 </div>
-                {issues.pageInfo.hasNextPage && !isFetching && (
+                {pageInfo.hasNextPage && !isFetching && (
                   <div
                     onClick={() => fetchMore()}
                     className="IssuesPage-fetchMore"
