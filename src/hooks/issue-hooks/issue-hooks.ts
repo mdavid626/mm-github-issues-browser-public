@@ -2,10 +2,22 @@ import { useQuery } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
 import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
+import { Filters, StateFilter } from '../../types/filters';
+import {
+  IssueQueryResult,
+  IssuesQueryResult,
+  IssueState,
+} from '../../types/issue';
 import { GetIssuesQuery, GetIssueQuery } from './queries';
 
-export const useIssues = (): [
+const stateFilterMap: Record<StateFilter, IssueState> = {
+  open: 'OPEN',
+  closed: 'CLOSED',
+};
+
+export const useIssues = (
+  filters: Filters
+): [
   IssuesQueryResult | undefined,
   boolean,
   ApolloError | undefined,
@@ -19,13 +31,16 @@ export const useIssues = (): [
   } = useQuery<IssuesQueryResult>(GetIssuesQuery, {
     variables: {
       cursor: null,
+      states: stateFilterMap[filters.state!] || null,
     },
     notifyOnNetworkStatusChange: true,
   });
   const fetchMore = useCallback(
     () =>
       queryFetchMore({
-        variables: { cursor: data?.repository.issues.pageInfo.endCursor },
+        variables: {
+          cursor: data?.repository.issues.pageInfo.endCursor,
+        },
       }),
     [queryFetchMore, data]
   );

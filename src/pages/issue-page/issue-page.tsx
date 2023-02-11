@@ -15,10 +15,7 @@ const IssuePage = () => {
   return (
     <div className="IssuePage">
       <Header />
-      <PageLoader
-        isLoading={isFetching && !queryResult}
-        errorMessage={queryError?.message}
-      >
+      <PageLoader isLoading={!queryResult} errorMessage={queryError?.message}>
         {() => (
           <div className="IssuePage-content">
             <div onClick={() => navigate(-1)} className="IssuePage-back">

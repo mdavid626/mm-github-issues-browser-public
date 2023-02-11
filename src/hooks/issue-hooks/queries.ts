@@ -1,12 +1,13 @@
 import { gql } from '@apollo/client';
 
 export const GetIssuesQuery = gql`
-  query getIssues($cursor: String) {
+  query getIssues($cursor: String, $states: [IssueState!]) {
     repository(owner: "facebook", name: "react") {
       id
       issues(
         first: 10
         after: $cursor
+        states: $states
         orderBy: { field: CREATED_AT, direction: DESC }
       ) {
         nodes {

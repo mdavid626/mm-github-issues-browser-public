@@ -40,3 +40,8 @@
 .IssuesPage-totalCount {
   align-self: flex-end;
 }
+
+.IssuesPage-filters {
+  display: flex;
+  justify-content: space-between;
+}

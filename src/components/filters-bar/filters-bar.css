@@ -1,0 +1,4 @@
+.FiltersBar {
+  display: flex;
+  gap: var(--space1);
+}

@@ -15,7 +15,7 @@ const client = new ApolloClient({
       Repository: {
         fields: {
           issues: {
-            keyArgs: false,
+            keyArgs: ['states'],
             merge: (
               existing: IssuesQueryResult['repository']['issues'],
               incoming: IssuesQueryResult['repository']['issues']
