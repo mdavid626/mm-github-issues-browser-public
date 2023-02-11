@@ -1,40 +1,74 @@
 .IssueItem {
   color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space3);
+}
+
+.IssueItem-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space2);
 }
 
 .IssueItem-titleAndState {
   display: flex;
-  gap: var(--space1);
+  gap: var(--space2);
   align-items: center;
 }
 
 .IssueItem-title {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .IssueItem-detail {
   display: flex;
-  gap: var(--space1);
+  gap: var(--space2);
   font-size: 12px;
 }
 
 .IssueItem-body {
-  margin: var(--space1) 0 0 0;
   white-space: pre-wrap;
   font-family: monospace;
+  border: 1px solid var(--secondary-color);
+  padding: var(--space2);
+  margin: 0 0 var(--space3) 0;
+  border-radius: 5px;
 }
 
 .IssueItem-commentsTitle {
-  margin: var(--space1) 0;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .IssueItem-comments {
   display: flex;
   flex-direction: column;
-  gap: var(--space1);
+  gap: var(--space3);
 }
 
-.IssueItem-fetchMore {
+.IssueItem-comment {
+}
+
+.IssueItem-comment:last-of-type {
+  border-bottom: none;
+  padding: 0;
+}
+
+.IssueItem-loadMore {
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: center;
+  color: var(--primary-color);
+  margin: 0 0 var(--space2) 0;
+}
+
+.IssueItem-loading {
+  font-size: 18px;
+  font-weight: bold;
+  align-self: center;
+  color: var(--primary-color);
+  margin: 0 0 var(--space3) 0;
 }

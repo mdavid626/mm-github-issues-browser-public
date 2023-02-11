@@ -5,10 +5,20 @@
 
 .IssueCommentItem-detail {
   display: flex;
-  gap: var(--space1);
+  gap: var(--space2);
+  border: 1px solid var(--secondary-color);
+  border-bottom: none;
+  padding: var(--space2);
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .IssueCommentItem-comment {
   white-space: pre-wrap;
   font-family: monospace;
+  padding: var(--space2);
+  border: 1px solid var(--secondary-color);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

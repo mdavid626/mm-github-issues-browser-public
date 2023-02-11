@@ -1,4 +1,18 @@
 .FiltersBar {
   display: flex;
-  gap: var(--space1);
+  gap: var(--space2);
+}
+
+.FiltersBar-state {
+  padding: var(--space1) var(--space2);
+  outline: none;
+}
+
+.FiltersBar-search {
+  padding: var(--space1) var(--space2);
+  outline: none;
+}
+
+.FiltersBar-searchButton {
+  padding: var(--space1) var(--space2);
 }

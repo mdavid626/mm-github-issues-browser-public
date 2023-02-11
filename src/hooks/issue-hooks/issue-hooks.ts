@@ -69,6 +69,7 @@ export const useFetchMoreIssueComment = (
       variables: {
         issueNumber,
       },
+      notifyOnNetworkStatusChange: true,
       skip: true,
       onError: (error) => {
         alert(error.message);

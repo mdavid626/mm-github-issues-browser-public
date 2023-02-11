@@ -49,12 +49,14 @@ const IssuesPage: React.FC = () => {
                 {pageInfo.hasNextPage && !isFetching && (
                   <div
                     onClick={() => fetchMore()}
-                    className="IssuesPage-fetchMore"
+                    className="IssuesPage-loadMore"
                   >
-                    Fetch More
+                    load more
                   </div>
                 )}
-                {isFetching && <div>Loading...</div>}
+                {isFetching && (
+                  <div className="IssuesPage-loading">loading...</div>
+                )}
               </>
             );
           }}

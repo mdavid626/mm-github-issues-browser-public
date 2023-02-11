@@ -1,7 +1,7 @@
 .Header {
   display: flex;
   flex-direction: column;
-  gap: var(--space2);
+  gap: var(--space3);
 }
 
 .Header-title {
@@ -9,7 +9,7 @@
   font-weight: bold;
   text-align: center;
   background: var(--primary-color);
-  padding: var(--space1) var(--space2);
+  padding: var(--space2) var(--space3);
   align-self: center;
   border-radius: 5px;
   color: #f2f2f2;
@@ -24,9 +24,9 @@
 
 .Header-navigation {
   display: flex;
-  gap: var(--space2);
+  gap: var(--space3);
   background-color: #222;
-  padding: var(--space1) var(--space2);
+  padding: var(--space2) var(--space3);
   flex-direction: column;
   align-items: center;
 }

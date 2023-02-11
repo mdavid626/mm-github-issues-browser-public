@@ -24,7 +24,7 @@ const IssuePage = () => {
               }
               className="IssuePage-back"
             >
-              Back to issues
+              « back to issues
             </div>
             <IssueItem issue={queryResult!.repository.issue} />
           </div>

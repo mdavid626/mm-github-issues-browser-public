@@ -14,14 +14,16 @@ const IssueItem: React.FC<{
   );
   return (
     <div className="IssueItem">
-      <div className="IssueItem-titleAndState">
-        <div className="IssueItem-title">{issue.title}</div>
-        <IssueStateBadge state={issue.state} />
-      </div>
-      <div className="IssueItem-detail">
-        <div>#{issue.number}</div>
-        <div>{format(parseISO(issue.createdAt), 'dd.MM.yyyy HH:mm')}</div>
-        <div>{issue.author.login}</div>
+      <div className="IssueItem-header">
+        <div className="IssueItem-titleAndState">
+          <div className="IssueItem-title">{issue.title}</div>
+          <IssueStateBadge state={issue.state} />
+        </div>
+        <div className="IssueItem-detail">
+          <div>#{issue.number}</div>
+          <div>{format(parseISO(issue.createdAt), 'dd.MM.yyyy HH:mm')}</div>
+          <div>{issue.author.login}</div>
+        </div>
       </div>
       <div className="IssueItem-body">{issue.body}</div>
       <div className="IssueItem-commentsTitle">
@@ -29,18 +31,24 @@ const IssueItem: React.FC<{
       </div>
       <div className="IssueItem-comments">
         {issue.comments.nodes.map((comment) => (
-          <IssueCommentItem key={comment.id} comment={comment} />
+          <IssueCommentItem
+            key={comment.id}
+            comment={comment}
+            className="IssueItem-comment"
+          />
         ))}
       </div>
       {issue.comments.pageInfo.hasNextPage && !isFetchingMoreComments && (
         <div
           onClick={() => fetchMoreComments(issue.comments.pageInfo.endCursor)}
-          className="IssueItem-fetchMore"
+          className="IssueItem-loadMore"
         >
-          Fetch More
+          load more comments
         </div>
       )}
-      {isFetchingMoreComments && <div>Loading...</div>}
+      {isFetchingMoreComments && (
+        <div className="IssueItem-loading">Loading...</div>
+      )}
     </div>
   );
 };
