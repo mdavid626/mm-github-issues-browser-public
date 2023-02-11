@@ -7,3 +7,8 @@
   display: flex;
   gap: var(--space1);
 }
+
+.IssueCommentItem-comment {
+  white-space: pre-wrap;
+  font-family: monospace;
+}

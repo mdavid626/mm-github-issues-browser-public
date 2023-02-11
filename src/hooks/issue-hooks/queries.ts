@@ -44,7 +44,7 @@ export const GetIssueQuery = gql`
         number
         stateReason
         url
-        bodyText
+        body
         author {
           login
         }
@@ -52,7 +52,7 @@ export const GetIssueQuery = gql`
           nodes {
             id
             createdAt
-            bodyText
+            body
             author {
               login
             }
@@ -84,7 +84,7 @@ export const GetCommentsQuery = gql`
           nodes {
             id
             createdAt
-            bodyText
+            body
             author {
               login
             }

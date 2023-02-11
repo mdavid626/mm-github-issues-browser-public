@@ -5,7 +5,7 @@ import './issue-comment-item.css';
 
 const IssueCommentItem: React.FC<{ comment: IssueComment }> = ({ comment }) => (
   <div className="IssueCommentItem">
-    <div>{comment.bodyText}</div>
+    <div className="IssueCommentItem-comment">{comment.body}</div>
     <div className="IssueCommentItem-detail">
       <div>{comment.author.login}</div>
       <div>{format(parseISO(comment.createdAt), 'dd.MM.yyyy HH:mm')}</div>

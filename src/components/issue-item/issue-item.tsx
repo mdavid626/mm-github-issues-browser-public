@@ -23,7 +23,7 @@ const IssueItem: React.FC<{
         <div>{format(parseISO(issue.createdAt), 'dd.MM.yyyy HH:mm')}</div>
         <div>{issue.author.login}</div>
       </div>
-      <div className="IssueItem-body">{issue.bodyText}</div>
+      <div className="IssueItem-body">{issue.body}</div>
       <div className="IssueItem-commentsTitle">
         Comments ({issue.comments.totalCount})
       </div>

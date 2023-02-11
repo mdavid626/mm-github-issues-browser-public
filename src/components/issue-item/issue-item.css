@@ -21,6 +21,7 @@
 .IssueItem-body {
   margin: var(--space1) 0 0 0;
   white-space: pre-wrap;
+  font-family: monospace;
 }
 
 .IssueItem-commentsTitle {

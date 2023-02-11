@@ -26,7 +26,7 @@ export type IssuesQueryResult = {
 
 export type IssueComment = {
   id: string;
-  bodyText: string;
+  body: string;
   author: {
     login: string;
   };
@@ -40,7 +40,7 @@ export type IssueQueryItem = {
   state: IssueState;
   number: number;
   url: string;
-  bodyText: string;
+  body: string;
   author: {
     login: string;
   };
