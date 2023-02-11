@@ -40,7 +40,7 @@ export const useIssues = (): [
   IssuesQueryResult | undefined,
   boolean,
   ApolloError | undefined,
-  (cursor: string | null) => void
+  () => void
 ] => {
   const {
     data,
@@ -53,8 +53,11 @@ export const useIssues = (): [
     },
   });
   const fetchMore = useCallback(
-    (cursor: string | null) => queryFetchMore({ variables: { cursor } }),
-    [queryFetchMore]
+    () =>
+      queryFetchMore({
+        variables: { cursor: data?.repository.issues.pageInfo.endCursor },
+      }),
+    [queryFetchMore, data]
   );
   return [data, loading, error, fetchMore];
 };
@@ -107,25 +110,27 @@ export const useIssue = (
   IssueQueryResult | undefined,
   boolean,
   ApolloError | undefined,
-  (commentsCursor: string | null) => void
+  () => void
 ] => {
-  const {
-    data,
-    loading,
-    error,
-    fetchMore: queryFetchMore,
-  } = useQuery<IssueQueryResult>(issueQuery, {
-    variables: {
-      issueNumber,
-      commentsCursor: null,
-    },
-  });
-  const fetchMore = useCallback(
-    (commentsCursor: string | null) =>
-      queryFetchMore({ variables: { commentsCursor } }),
-    [queryFetchMore]
+  const { data, loading, error, fetchMore } = useQuery<IssueQueryResult>(
+    issueQuery,
+    {
+      variables: {
+        issueNumber,
+        commentsCursor: null,
+      },
+    }
   );
-  return [data, loading, error, fetchMore];
+  const fetchMoreComments = useCallback(
+    () =>
+      fetchMore({
+        variables: {
+          commentsCursor: data?.repository.issue.comments.pageInfo.endCursor,
+        },
+      }),
+    [fetchMore, data]
+  );
+  return [data, loading, error, fetchMoreComments];
 };
 
 export const useIssueNumber = () => {

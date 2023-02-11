@@ -32,12 +32,7 @@ const IssuesPage: React.FC = () => {
             ))}
           </div>
           {issues?.repository.issues.pageInfo.hasNextPage && (
-            <div
-              onClick={() =>
-                fetchMore(issues.repository.issues.pageInfo.endCursor)
-              }
-              className="IssuesPage-fetchMore"
-            >
+            <div onClick={() => fetchMore()} className="IssuesPage-fetchMore">
               Fetch More
             </div>
           )}

@@ -7,7 +7,7 @@ import './issue-item.css';
 
 const IssueItem: React.FC<{
   issue: IssueQueryItem;
-  fetchMore: (commentsCursor: string | null) => void;
+  fetchMore: () => void;
 }> = ({ issue, fetchMore }) => (
   <div className="IssueItem">
     <div className="IssueItem-titleAndState">
@@ -29,10 +29,7 @@ const IssueItem: React.FC<{
       ))}
     </div>
     {issue.comments.pageInfo.hasNextPage && (
-      <div
-        onClick={() => fetchMore(issue.comments.pageInfo.endCursor)}
-        className="IssueItem-fetchMore"
-      >
+      <div onClick={() => fetchMore()} className="IssueItem-fetchMore">
         Fetch More
       </div>
     )}
