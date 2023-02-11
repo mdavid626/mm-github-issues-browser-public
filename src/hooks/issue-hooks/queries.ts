@@ -33,7 +33,7 @@ export const GetIssuesQuery = gql`
 `;
 
 export const GetIssueQuery = gql`
-  query getIssue($issueNumber: Int!, $commentsCursor: String) {
+  query getIssue($issueNumber: Int!) {
     repository(owner: "facebook", name: "react") {
       id
       issue(number: $issueNumber) {
@@ -48,6 +48,34 @@ export const GetIssueQuery = gql`
         author {
           login
         }
+        comments(first: 3, orderBy: { field: UPDATED_AT, direction: DESC }) {
+          nodes {
+            id
+            createdAt
+            bodyText
+            author {
+              login
+            }
+          }
+          pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+          }
+          totalCount
+        }
+      }
+    }
+  }
+`;
+
+export const GetCommentsQuery = gql`
+  query getIssueComments($issueNumber: Int!, $commentsCursor: String) {
+    repository(owner: "facebook", name: "react") {
+      id
+      issue(number: $issueNumber) {
+        id
         comments(
           first: 3
           after: $commentsCursor

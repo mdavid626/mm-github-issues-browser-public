@@ -8,7 +8,7 @@ import {
   IssuesQueryResult,
   IssueState,
 } from '../../types/issue';
-import { GetIssuesQuery, GetIssueQuery } from './queries';
+import { GetIssuesQuery, GetIssueQuery, GetCommentsQuery } from './queries';
 
 const stateFilterMap: Record<StateFilter, IssueState> = {
   open: 'OPEN',
@@ -49,32 +49,40 @@ export const useIssues = (
 
 export const useIssue = (
   issueNumber: number
-): [
-  IssueQueryResult | undefined,
-  boolean,
-  ApolloError | undefined,
-  () => void
-] => {
-  const { data, loading, error, fetchMore } = useQuery<IssueQueryResult>(
-    GetIssueQuery,
+): [IssueQueryResult | undefined, ApolloError | undefined] => {
+  const { data, error } = useQuery<IssueQueryResult>(GetIssueQuery, {
+    variables: {
+      issueNumber,
+    },
+  });
+  return [data, error];
+};
+
+export const useFetchMoreIssueComment = (
+  issueNumber: number
+): [(commentsCursor: string) => void, boolean] => {
+  const { fetchMore: queryFetchMore, loading } = useQuery<IssueQueryResult>(
+    GetCommentsQuery,
     {
       variables: {
         issueNumber,
-        commentsCursor: null,
       },
-      notifyOnNetworkStatusChange: true,
+      skip: true,
+      onError: (error) => {
+        alert(error.message);
+      },
     }
   );
-  const fetchMoreComments = useCallback(
-    () =>
-      fetchMore({
+  const fetchMore = useCallback(
+    (commentsCursor: string) =>
+      queryFetchMore({
         variables: {
-          commentsCursor: data?.repository.issue.comments.pageInfo.endCursor,
+          commentsCursor,
         },
       }),
-    [fetchMore, data]
+    [queryFetchMore]
   );
-  return [data, loading, error, fetchMoreComments];
+  return [fetchMore, loading];
 };
 
 export const useIssueNumber = () => {

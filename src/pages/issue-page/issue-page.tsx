@@ -9,8 +9,7 @@ import './issue-page.css';
 
 const IssuePage = () => {
   const issueNumber = useIssueNumber();
-  const [queryResult, isFetching, queryError, fetchMoreComments] =
-    useIssue(issueNumber);
+  const [queryResult, queryError] = useIssue(issueNumber);
   const navigate = useNavigate();
   return (
     <div className="IssuePage">
@@ -21,11 +20,7 @@ const IssuePage = () => {
             <div onClick={() => navigate(-1)} className="IssuePage-back">
               Back to issues
             </div>
-            <IssueItem
-              issue={queryResult!.repository.issue}
-              fetchMoreComments={fetchMoreComments}
-              isFetching={isFetching}
-            />
+            <IssueItem issue={queryResult!.repository.issue} />
           </div>
         )}
       </PageLoader>
