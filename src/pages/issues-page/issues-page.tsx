@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FiltersBar from '../../components/filters-bar/filters-bar';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
@@ -12,6 +12,7 @@ import './issues-page.css';
 const IssuesPage: React.FC = () => {
   const [filters, setFilters] = useFilters();
   const [queryResult, isFetching, queryError, fetchMore] = useIssues(filters);
+  const location = useLocation();
   return (
     <div className="IssuesPage">
       <Header />
@@ -34,7 +35,10 @@ const IssuesPage: React.FC = () => {
                 <div className="IssuesPage-issues">
                   {issues.map((issue) => (
                     <Link
-                      to={`/issue/${encodeURIComponent(issue.number)}`}
+                      to={{
+                        pathname: `/issue/${encodeURIComponent(issue.number)}`,
+                        search: location.search,
+                      }}
                       className="IssuesPage-issue"
                       key={issue.id}
                     >
