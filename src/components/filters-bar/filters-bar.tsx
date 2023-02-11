@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Filters, StateFilter } from '../../types/filters';
 import './filters-bar.css';
 
@@ -7,6 +7,11 @@ const FiltersBar: React.FC<{
   setFilters: (newFilters: Filters) => void;
 }> = ({ filters, setFilters }) => {
   const [search, setSearch] = useState(filters.search);
+  useEffect(() => {
+    if (filters.search !== search) {
+      setSearch(filters.search);
+    }
+  }, [filters.search, setSearch]);
   return (
     <div className="FiltersBar">
       <select
@@ -17,6 +22,7 @@ const FiltersBar: React.FC<{
             state: (e.currentTarget.value as StateFilter) || null,
           })
         }
+        className="FiltersBar-state"
       >
         <option value="">All</option>
         <option value="open">Open</option>
@@ -34,6 +40,7 @@ const FiltersBar: React.FC<{
             });
           }
         }}
+        className="FiltersBar-search"
       />
       <button
         type="button"
@@ -43,6 +50,7 @@ const FiltersBar: React.FC<{
             search,
           })
         }
+        className="FiltersBar-searchButton"
       >
         Search
       </button>
