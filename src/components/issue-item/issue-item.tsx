@@ -5,10 +5,10 @@ import IssueCommentItem from '../issue-comment-item/issue-comment-item';
 import IssueStateBadge from '../issue-state-badge/issue-state-badge';
 import './issue-item.css';
 
-const IssueItem: React.FC<{ issue: IssueQueryItem; fetchMore: () => void }> = ({
-  issue,
-  fetchMore,
-}) => (
+const IssueItem: React.FC<{
+  issue: IssueQueryItem;
+  fetchMore: (commentsCursor: string | null) => void;
+}> = ({ issue, fetchMore }) => (
   <div className="IssueItem">
     <div className="IssueItem-titleAndState">
       <div className="IssueItem-title">{issue.title}</div>
@@ -29,7 +29,10 @@ const IssueItem: React.FC<{ issue: IssueQueryItem; fetchMore: () => void }> = ({
       ))}
     </div>
     {issue.comments.pageInfo.hasNextPage && (
-      <div onClick={() => fetchMore()} className="IssueItem-fetchMore">
+      <div
+        onClick={() => fetchMore(issue.comments.pageInfo.endCursor)}
+        className="IssueItem-fetchMore"
+      >
         Fetch More
       </div>
     )}

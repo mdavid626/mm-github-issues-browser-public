@@ -23,17 +23,7 @@ const IssuePage = () => {
             Back to issues
           </div>
           {issue && (
-            <IssueItem
-              issue={issue.repository.issue}
-              fetchMore={() =>
-                fetchMore({
-                  variables: {
-                    commentsCursor:
-                      issue.repository.issue.comments.pageInfo.endCursor,
-                  },
-                })
-              }
-            />
+            <IssueItem issue={issue.repository.issue} fetchMore={fetchMore} />
           )}
         </div>
       </PageLoader>

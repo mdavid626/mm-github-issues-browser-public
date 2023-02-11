@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
 
@@ -40,15 +40,21 @@ export const useIssues = (): [
   IssuesQueryResult | undefined,
   boolean,
   ApolloError | undefined,
-  (args: { variables: { cursor: string | null } }) => void
+  (cursor: string | null) => void
 ] => {
-  const { data, loading, error, fetchMore } = useQuery<IssuesQueryResult>(
-    issuesQuery,
-    {
-      variables: {
-        cursor: null,
-      },
-    }
+  const {
+    data,
+    loading,
+    error,
+    fetchMore: queryFetchMore,
+  } = useQuery<IssuesQueryResult>(issuesQuery, {
+    variables: {
+      cursor: null,
+    },
+  });
+  const fetchMore = useCallback(
+    (cursor: string | null) => queryFetchMore({ variables: { cursor } }),
+    [queryFetchMore]
   );
   return [data, loading, error, fetchMore];
 };
@@ -101,16 +107,23 @@ export const useIssue = (
   IssueQueryResult | undefined,
   boolean,
   ApolloError | undefined,
-  (args: { variables: { commentsCursor: string | null } }) => void
+  (commentsCursor: string | null) => void
 ] => {
-  const { data, loading, error, fetchMore } = useQuery<IssueQueryResult>(
-    issueQuery,
-    {
-      variables: {
-        issueNumber,
-        commentsCursor: null,
-      },
-    }
+  const {
+    data,
+    loading,
+    error,
+    fetchMore: queryFetchMore,
+  } = useQuery<IssueQueryResult>(issueQuery, {
+    variables: {
+      issueNumber,
+      commentsCursor: null,
+    },
+  });
+  const fetchMore = useCallback(
+    (commentsCursor: string | null) =>
+      queryFetchMore({ variables: { commentsCursor } }),
+    [queryFetchMore]
   );
   return [data, loading, error, fetchMore];
 };
