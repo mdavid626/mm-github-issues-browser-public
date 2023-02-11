@@ -7,8 +7,9 @@ import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
 import { SearchForIssues, GetIssueQuery, GetCommentsQuery } from './queries';
 
 const getSearch = (filters: Filters) => {
+  const escapedSearch = filters.search.replace(/[^a-z\d\s]/gi, '');
   const search = filters.search
-    ? `(in:title ${filters.search} OR in:body ${filters.search})`
+    ? `(in:title ${escapedSearch} OR in:body ${escapedSearch})`
     : '';
   const state = filters.state ? `state:${filters.state}` : '';
   return ['repo:facebook/react', 'type:issue', state, search]
