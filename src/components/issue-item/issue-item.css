@@ -33,3 +33,7 @@
   flex-direction: column;
   gap: var(--space1);
 }
+
+.IssueItem-fetchMore {
+  cursor: pointer;
+}

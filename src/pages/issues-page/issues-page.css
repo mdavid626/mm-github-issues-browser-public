@@ -36,3 +36,7 @@
 .IssuesPage-fetchMore {
   cursor: pointer;
 }
+
+.IssuesPage-totalCount {
+  align-self: flex-end;
+}

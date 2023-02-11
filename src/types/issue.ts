@@ -19,6 +19,7 @@ export type IssuesQueryResult = {
     issues: {
       nodes: IssuesQueryItem[];
       pageInfo: PageInfo;
+      totalCount: number;
     };
   };
 };
@@ -44,9 +45,9 @@ export type IssueQueryItem = {
     login: string;
   };
   comments: {
-    edges: {
-      node: IssueComment;
-    }[];
+    nodes: IssueComment[];
+    pageInfo: PageInfo;
+    totalCount: number;
   };
 };
 

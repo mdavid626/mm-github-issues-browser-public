@@ -30,6 +30,7 @@ const issuesQuery = gql`
           endCursor
           hasPreviousPage
         }
+        totalCount
       }
     }
   }
@@ -53,7 +54,7 @@ export const useIssues = (): [
 };
 
 const issueQuery = gql`
-  query getIssue($issueNumber: Int!) {
+  query getIssue($issueNumber: Int!, $commentsCursor: String) {
     repository(owner: "facebook", name: "react") {
       id
       issue(number: $issueNumber) {
@@ -68,17 +69,26 @@ const issueQuery = gql`
         author {
           login
         }
-        comments(last: 20) {
-          edges {
-            node {
-              bodyText
-              author {
-                login
-              }
-              createdAt
-              id
+        comments(
+          first: 3
+          after: $commentsCursor
+          orderBy: { field: UPDATED_AT, direction: DESC }
+        ) {
+          nodes {
+            bodyText
+            author {
+              login
             }
+            createdAt
+            id
           }
+          pageInfo {
+            hasNextPage
+            startCursor
+            endCursor
+            hasPreviousPage
+          }
+          totalCount
         }
       }
     }
@@ -87,13 +97,22 @@ const issueQuery = gql`
 
 export const useIssue = (
   issueNumber: number
-): [IssueQueryResult | undefined, boolean, ApolloError | undefined] => {
-  const { data, loading, error } = useQuery<IssueQueryResult>(issueQuery, {
-    variables: {
-      issueNumber,
-    },
-  });
-  return [data, loading, error];
+): [
+  IssueQueryResult | undefined,
+  boolean,
+  ApolloError | undefined,
+  (args: { variables: { commentsCursor: string | null } }) => void
+] => {
+  const { data, loading, error, fetchMore } = useQuery<IssueQueryResult>(
+    issueQuery,
+    {
+      variables: {
+        issueNumber,
+        commentsCursor: null,
+      },
+    }
+  );
+  return [data, loading, error, fetchMore];
 };
 
 export const useIssueNumber = () => {

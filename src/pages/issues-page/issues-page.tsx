@@ -17,6 +17,9 @@ const IssuesPage: React.FC = () => {
         errorMessage={issuesError?.message}
       >
         <div className="IssuesPage-content">
+          <div className="IssuesPage-totalCount">
+            Total Issues: {issues?.repository.issues.totalCount}
+          </div>
           <div className="IssuesPage-issues">
             {issues?.repository.issues.nodes.map((issue) => (
               <Link

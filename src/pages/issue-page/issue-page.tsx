@@ -9,7 +9,7 @@ import './issue-page.css';
 
 const IssuePage = () => {
   const issueNumber = useIssueNumber();
-  const [issue, isIssueFetching, issueError] = useIssue(issueNumber);
+  const [issue, isIssueFetching, issueError, fetchMore] = useIssue(issueNumber);
   const navigate = useNavigate();
   return (
     <div className="IssuePage">
@@ -22,7 +22,19 @@ const IssuePage = () => {
           <div onClick={() => navigate(-1)} className="IssuePage-back">
             Back to issues
           </div>
-          {issue && <IssueItem issue={issue.repository.issue} />}
+          {issue && (
+            <IssueItem
+              issue={issue.repository.issue}
+              fetchMore={() =>
+                fetchMore({
+                  variables: {
+                    commentsCursor:
+                      issue.repository.issue.comments.pageInfo.endCursor,
+                  },
+                })
+              }
+            />
+          )}
         </div>
       </PageLoader>
       <Footer />
