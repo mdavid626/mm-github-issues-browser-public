@@ -5,7 +5,7 @@ import './page-loader.css';
 const PageLoader: React.FC<{
   isLoading?: boolean;
   errorMessage?: string;
-  children: ReactElement | null;
+  children: () => ReactElement | null;
 }> = ({ isLoading, errorMessage, children }) => {
   if (errorMessage) {
     return <div className="PageLoader-errorMessage">{errorMessage}</div>;
@@ -20,7 +20,7 @@ const PageLoader: React.FC<{
       />
     );
   }
-  return children;
+  return children();
 };
 
 export default PageLoader;

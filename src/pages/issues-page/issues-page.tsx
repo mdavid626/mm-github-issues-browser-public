@@ -8,35 +8,46 @@ import { useIssues } from '../../hooks/issue-hooks/issue-hooks';
 import './issues-page.css';
 
 const IssuesPage: React.FC = () => {
-  const [issues, areIssuesFetching, issuesError, fetchMore] = useIssues();
+  const [queryResult, isFetching, queryError, fetchMore] = useIssues();
   return (
     <div className="IssuesPage">
       <Header />
       <PageLoader
-        isLoading={areIssuesFetching}
-        errorMessage={issuesError?.message}
+        isLoading={isFetching && !queryResult}
+        errorMessage={queryError?.message}
       >
-        <div className="IssuesPage-content">
-          <div className="IssuesPage-totalCount">
-            Total Issues: {issues?.repository.issues.totalCount}
-          </div>
-          <div className="IssuesPage-issues">
-            {issues?.repository.issues.nodes.map((issue) => (
-              <Link
-                to={`/issue/${encodeURIComponent(issue.number)}`}
-                className="IssuesPage-issue"
-                key={issue.id}
-              >
-                <IssuesItem issue={issue} />
-              </Link>
-            ))}
-          </div>
-          {issues?.repository.issues.pageInfo.hasNextPage && (
-            <div onClick={() => fetchMore()} className="IssuesPage-fetchMore">
-              Fetch More
+        {() => {
+          const {
+            repository: { issues },
+          } = queryResult!;
+          return (
+            <div className="IssuesPage-content">
+              <div className="IssuesPage-totalCount">
+                Total Issues: {issues.totalCount}
+              </div>
+              <div className="IssuesPage-issues">
+                {issues.nodes.map((issue) => (
+                  <Link
+                    to={`/issue/${encodeURIComponent(issue.number)}`}
+                    className="IssuesPage-issue"
+                    key={issue.id}
+                  >
+                    <IssuesItem issue={issue} />
+                  </Link>
+                ))}
+              </div>
+              {issues.pageInfo.hasNextPage && !isFetching && (
+                <div
+                  onClick={() => fetchMore()}
+                  className="IssuesPage-fetchMore"
+                >
+                  Fetch More
+                </div>
+              )}
+              {isFetching && <div>Loading...</div>}
             </div>
-          )}
-        </div>
+          );
+        }}
       </PageLoader>
       <Footer />
     </div>

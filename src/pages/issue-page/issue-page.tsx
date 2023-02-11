@@ -9,23 +9,28 @@ import './issue-page.css';
 
 const IssuePage = () => {
   const issueNumber = useIssueNumber();
-  const [issue, isIssueFetching, issueError, fetchMore] = useIssue(issueNumber);
+  const [queryResult, isFetching, queryError, fetchMoreComments] =
+    useIssue(issueNumber);
   const navigate = useNavigate();
   return (
     <div className="IssuePage">
       <Header />
       <PageLoader
-        isLoading={isIssueFetching}
-        errorMessage={issueError?.message}
+        isLoading={isFetching && !queryResult}
+        errorMessage={queryError?.message}
       >
-        <div className="IssuePage-content">
-          <div onClick={() => navigate(-1)} className="IssuePage-back">
-            Back to issues
+        {() => (
+          <div className="IssuePage-content">
+            <div onClick={() => navigate(-1)} className="IssuePage-back">
+              Back to issues
+            </div>
+            <IssueItem
+              issue={queryResult!.repository.issue}
+              fetchMoreComments={fetchMoreComments}
+              isFetching={isFetching}
+            />
           </div>
-          {issue && (
-            <IssueItem issue={issue.repository.issue} fetchMore={fetchMore} />
-          )}
-        </div>
+        )}
       </PageLoader>
       <Footer />
     </div>

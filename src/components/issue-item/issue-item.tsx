@@ -7,8 +7,9 @@ import './issue-item.css';
 
 const IssueItem: React.FC<{
   issue: IssueQueryItem;
-  fetchMore: () => void;
-}> = ({ issue, fetchMore }) => (
+  fetchMoreComments: () => void;
+  isFetching?: boolean;
+}> = ({ issue, fetchMoreComments, isFetching }) => (
   <div className="IssueItem">
     <div className="IssueItem-titleAndState">
       <div className="IssueItem-title">{issue.title}</div>
@@ -28,11 +29,12 @@ const IssueItem: React.FC<{
         <IssueCommentItem key={comment.id} comment={comment} />
       ))}
     </div>
-    {issue.comments.pageInfo.hasNextPage && (
-      <div onClick={() => fetchMore()} className="IssueItem-fetchMore">
+    {issue.comments.pageInfo.hasNextPage && !isFetching && (
+      <div onClick={() => fetchMoreComments()} className="IssueItem-fetchMore">
         Fetch More
       </div>
     )}
+    {isFetching && <div>Loading...</div>}
   </div>
 );
 

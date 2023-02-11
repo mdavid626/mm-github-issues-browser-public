@@ -20,6 +20,7 @@ export const useIssues = (): [
     variables: {
       cursor: null,
     },
+    notifyOnNetworkStatusChange: true,
   });
   const fetchMore = useCallback(
     () =>
@@ -46,6 +47,7 @@ export const useIssue = (
         issueNumber,
         commentsCursor: null,
       },
+      notifyOnNetworkStatusChange: true,
     }
   );
   const fetchMoreComments = useCallback(
