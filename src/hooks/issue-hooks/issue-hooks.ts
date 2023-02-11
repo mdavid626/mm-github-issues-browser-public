@@ -1,40 +1,9 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
 import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
-
-const issuesQuery = gql`
-  query getIssues($cursor: String) {
-    repository(owner: "facebook", name: "react") {
-      id
-      issues(
-        first: 10
-        after: $cursor
-        orderBy: { field: CREATED_AT, direction: DESC }
-      ) {
-        nodes {
-          id
-          createdAt
-          title
-          state
-          number
-          url
-          author {
-            login
-          }
-        }
-        pageInfo {
-          hasNextPage
-          startCursor
-          endCursor
-          hasPreviousPage
-        }
-        totalCount
-      }
-    }
-  }
-`;
+import { GetIssuesQuery, GetIssueQuery } from './queries';
 
 export const useIssues = (): [
   IssuesQueryResult | undefined,
@@ -47,7 +16,7 @@ export const useIssues = (): [
     loading,
     error,
     fetchMore: queryFetchMore,
-  } = useQuery<IssuesQueryResult>(issuesQuery, {
+  } = useQuery<IssuesQueryResult>(GetIssuesQuery, {
     variables: {
       cursor: null,
     },
@@ -62,48 +31,6 @@ export const useIssues = (): [
   return [data, loading, error, fetchMore];
 };
 
-const issueQuery = gql`
-  query getIssue($issueNumber: Int!, $commentsCursor: String) {
-    repository(owner: "facebook", name: "react") {
-      id
-      issue(number: $issueNumber) {
-        id
-        createdAt
-        title
-        state
-        number
-        stateReason
-        url
-        bodyText
-        author {
-          login
-        }
-        comments(
-          first: 3
-          after: $commentsCursor
-          orderBy: { field: UPDATED_AT, direction: DESC }
-        ) {
-          nodes {
-            bodyText
-            author {
-              login
-            }
-            createdAt
-            id
-          }
-          pageInfo {
-            hasNextPage
-            startCursor
-            endCursor
-            hasPreviousPage
-          }
-          totalCount
-        }
-      }
-    }
-  }
-`;
-
 export const useIssue = (
   issueNumber: number
 ): [
@@ -113,7 +40,7 @@ export const useIssue = (
   () => void
 ] => {
   const { data, loading, error, fetchMore } = useQuery<IssueQueryResult>(
-    issueQuery,
+    GetIssueQuery,
     {
       variables: {
         issueNumber,
