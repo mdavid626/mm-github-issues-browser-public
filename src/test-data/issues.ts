@@ -1,6 +1,11 @@
-import { Issue, IssueQueryResult, IssuesItem } from '../types/issue';
+import {
+  Issue,
+  IssueQueryResult,
+  IssuesItem,
+  IssuesQueryResult,
+} from '../types/issue';
 import { testAuthor1 } from './authors';
-import { testIssueComments1 } from './issue-comments';
+import { testEmptyIssueComments, testIssueComments1 } from './issue-comments';
 
 export const testIssue1: Issue = {
   id: 'I_kwDOAJy2Ks5d65oG',
@@ -12,6 +17,18 @@ export const testIssue1: Issue = {
   body: 'test issue1 body',
   author: testAuthor1,
   comments: testIssueComments1,
+};
+
+export const testIssue2: Issue = {
+  id: 'I_abDOCJy2Ks4d65ED',
+  createdAt: '2022-12-08T07:55:14Z',
+  title: 'Considering use mobx?',
+  state: 'OPEN',
+  number: 26130,
+  url: 'https://github.com/facebook/react/issues/26130',
+  body: 'test issue2 body',
+  author: testAuthor1,
+  comments: testEmptyIssueComments,
 };
 
 export const testIssuesItem1: IssuesItem = {
@@ -27,5 +44,27 @@ export const testIssuesItem1: IssuesItem = {
 export const testIssueQueryResult1: IssueQueryResult = {
   repository: {
     issue: testIssue1,
+  },
+};
+
+export const testIssuesQueryResult1: IssuesQueryResult = {
+  search: {
+    issueCount: 2,
+    pageInfo: {
+      hasNextPage: true,
+      endCursor: 'endCursor1',
+    },
+    nodes: [testIssue1, testIssue2],
+  },
+};
+
+export const testEmptyIssuesQueryResult1: IssuesQueryResult = {
+  search: {
+    issueCount: 0,
+    pageInfo: {
+      hasNextPage: false,
+      endCursor: 'endCursor1',
+    },
+    nodes: [],
   },
 };

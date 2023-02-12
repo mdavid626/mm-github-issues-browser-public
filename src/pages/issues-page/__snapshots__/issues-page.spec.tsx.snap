@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issues-page should render 1`] = `
+<DocumentFragment>
+  <div
+    class="IssuesPage"
+  >
+    <div>
+      header
+    </div>
+    <div
+      class="IssuesPage-content"
+    >
+      <div
+        class="IssuesPage-filters"
+      >
+        <div>
+          filters-bar
+        </div>
+        <div
+          class="IssuesPage-totalCount"
+        >
+          Total Issues: 2
+        </div>
+      </div>
+      <div
+        class="IssuesPage-issues"
+      >
+        <a
+          class="IssuesPage-issue"
+          href="/issue/26126"
+        >
+          <div>
+            issue-list-item-26126
+          </div>
+        </a>
+        <a
+          class="IssuesPage-issue"
+          href="/issue/26130"
+        >
+          <div>
+            issue-list-item-26130
+          </div>
+        </a>
+      </div>
+      <div
+        class="IssuesPage-loadMore"
+      >
+        load more
+      </div>
+    </div>
+    <div>
+      footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`issues-page should render spinner when loading 1`] = `
+<DocumentFragment>
+  <div
+    class="IssuesPage"
+  >
+    <div>
+      header
+    </div>
+    <div
+      class="IssuesPage-content"
+    >
+      <div
+        class="IssuesPage-filters"
+      >
+        <div>
+          filters-bar
+        </div>
+      </div>
+      <img
+        alt="loading spinner"
+        class="PageLoader-spinner"
+        data-testid="PageLoader-spinner"
+        src="spinner.svg"
+      />
+    </div>
+    <div>
+      footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
