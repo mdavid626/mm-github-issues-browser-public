@@ -1,4 +1,4 @@
-import { IssueComment } from '../types/issue';
+import { IssueComment } from '../types/issue-comment';
 
 export const issueComment1: IssueComment = {
   id: 'IC_kwDOAJy2Ks5Ux_nZ',

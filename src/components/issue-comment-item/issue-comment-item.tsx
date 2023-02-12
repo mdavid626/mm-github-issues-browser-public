@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
-import { IssueComment } from '../../types/issue';
+import { IssueComment } from '../../types/issue-comment';
 import './issue-comment-item.css';
 
 const IssueCommentItem: React.FC<{

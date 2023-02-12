@@ -4,7 +4,11 @@ import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Filters } from '../../types/filters';
 import { IssueQueryResult, IssuesQueryResult } from '../../types/issue';
-import { SearchForIssues, GetIssueQuery, GetCommentsQuery } from './queries';
+import {
+  GetIssuesQuery,
+  GetIssueQuery,
+  GetIssueCommentsQuery,
+} from './issue-queries';
 
 const getSearch = (filters: Filters) => {
   const escapedSearch = filters.search.replace(/[^a-z\d\s]/gi, '');
@@ -30,7 +34,7 @@ export const useIssues = (
     loading,
     error,
     fetchMore: queryFetchMore,
-  } = useQuery<IssuesQueryResult>(SearchForIssues, {
+  } = useQuery<IssuesQueryResult>(GetIssuesQuery, {
     variables: {
       cursor: null,
       search: getSearch(filters),
@@ -63,15 +67,18 @@ export const useIssue = (
 export const useFetchMoreIssueComment = (
   issueNumber: number
 ): [(commentsCursor: string) => void, boolean] => {
-  const [load, { loading }] = useLazyQuery<IssueQueryResult>(GetCommentsQuery, {
-    variables: {
-      issueNumber,
-    },
-    fetchPolicy: 'network-only',
-    onError: (error) => {
-      alert(error.message);
-    },
-  });
+  const [load, { loading }] = useLazyQuery<IssueQueryResult>(
+    GetIssueCommentsQuery,
+    {
+      variables: {
+        issueNumber,
+      },
+      fetchPolicy: 'network-only',
+      onError: (error) => {
+        alert(error.message);
+      },
+    }
+  );
   const fetchMore = useCallback(
     (commentsCursor: string) =>
       load({

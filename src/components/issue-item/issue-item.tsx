@@ -1,12 +1,12 @@
 import { parseISO, format } from 'date-fns';
 import React from 'react';
-import { IssueQueryItem } from '../../types/issue';
+import { Issue } from '../../types/issue';
 import IssueComments from '../issue-comments/issue-comments';
 import IssueStateBadge from '../issue-state-badge/issue-state-badge';
 import './issue-item.css';
 
 const IssueItem: React.FC<{
-  issue: IssueQueryItem;
+  issue: Issue;
 }> = ({ issue }) => (
   <div className="IssueItem">
     <div className="IssueItem-header">

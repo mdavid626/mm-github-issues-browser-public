@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-export const SearchForIssues = gql`
-  query searchForIssues($cursor: String, $search: String!) {
+export const GetIssuesQuery = gql`
+  query getIssues($cursor: String, $search: String!) {
     search(query: $search, after: $cursor, type: ISSUE, first: 10) {
       issueCount
       nodes {
@@ -61,7 +61,7 @@ export const GetIssueQuery = gql`
   }
 `;
 
-export const GetCommentsQuery = gql`
+export const GetIssueCommentsQuery = gql`
   query getIssueComments($issueNumber: Int!, $commentsCursor: String) {
     repository(owner: "facebook", name: "react") {
       id

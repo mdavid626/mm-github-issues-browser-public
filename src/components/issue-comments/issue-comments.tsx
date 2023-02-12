@@ -1,12 +1,12 @@
 import React from 'react';
 import { useFetchMoreIssueComment } from '../../hooks/issue-hooks/issue-hooks';
-import { IssueQueryItem } from '../../types/issue';
+import { Issue } from '../../types/issue';
 import IssueCommentItem from '../issue-comment-item/issue-comment-item';
 import './issue-comments.css';
 
 const IssueComments: React.FC<{
   issueNumber: number;
-  comments: IssueQueryItem['comments'];
+  comments: Issue['comments'];
 }> = ({ issueNumber, comments }) => {
   const [fetchMoreComments, isFetchingMoreComments] =
     useFetchMoreIssueComment(issueNumber);

@@ -1,37 +1,10 @@
+import { Author } from './author';
+import { IssueComment } from './issue-comment';
 import { PageInfo } from './pagination';
 
 export type IssueState = 'OPEN' | 'CLOSED';
 
-export type IssuesQueryItem = {
-  id: string;
-  createdAt: string;
-  title: string;
-  state: IssueState;
-  number: number;
-  url: string;
-  author: {
-    login: string;
-  };
-};
-
-export type IssuesQueryResult = {
-  search: {
-    issueCount: number;
-    nodes: IssuesQueryItem[];
-    pageInfo: PageInfo;
-  };
-};
-
-export type IssueComment = {
-  id: string;
-  body: string;
-  author: {
-    login: string;
-  };
-  createdAt: string;
-};
-
-export type IssueQueryItem = {
+export type Issue = {
   id: string;
   createdAt: string;
   title: string;
@@ -39,9 +12,7 @@ export type IssueQueryItem = {
   number: number;
   url: string;
   body: string;
-  author: {
-    login: string;
-  };
+  author: Author;
   comments: {
     nodes: IssueComment[];
     pageInfo: PageInfo;
@@ -51,6 +22,19 @@ export type IssueQueryItem = {
 
 export type IssueQueryResult = {
   repository: {
-    issue: IssueQueryItem;
+    issue: Issue;
+  };
+};
+
+export type IssuesQueryItem = Pick<
+  Issue,
+  'id' | 'createdAt' | 'title' | 'state' | 'number' | 'url' | 'author'
+>;
+
+export type IssuesQueryResult = {
+  search: {
+    issueCount: number;
+    nodes: IssuesQueryItem[];
+    pageInfo: PageInfo;
   };
 };
