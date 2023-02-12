@@ -11,6 +11,7 @@ const FiltersBar: React.FC<{
     if (filters.search !== search) {
       setSearch(filters.search);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.search, setSearch]);
   return (
     <div className="FiltersBar">
