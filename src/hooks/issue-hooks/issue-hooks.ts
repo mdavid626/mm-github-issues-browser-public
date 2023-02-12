@@ -67,7 +67,7 @@ export const useFetchMoreIssueComment = (
     variables: {
       issueNumber,
     },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
     onError: (error) => {
       alert(error.message);
     },
