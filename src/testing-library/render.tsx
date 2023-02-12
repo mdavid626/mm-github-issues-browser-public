@@ -58,6 +58,39 @@ export const renderWithRouter = (
   } as RenderResult & RouterResult;
 };
 
+export const renderWithRouterAndQueryClient = (
+  component: ReactElement,
+  options?: Omit<RenderOptions, 'queries'>,
+  initialEntries?: InitialEntry[]
+): RenderResult & RouterResult & ApolloClientResult => {
+  const router = {} as SimpleRouter;
+  const apolloClient = new ApolloClient({
+    uri: 'https://api.github.com/graphql',
+    cache: createApolloMemoryCache(),
+  });
+  return {
+    ...render(component, {
+      wrapper: ({ children }) => {
+        const Children = () => {
+          router.location = useLocation();
+          router.navigate = useNavigate();
+          return children;
+        };
+        return (
+          <ApolloProvider client={apolloClient}>
+            <MemoryRouter initialEntries={initialEntries}>
+              <Children />
+            </MemoryRouter>
+          </ApolloProvider>
+        );
+      },
+      ...options,
+    }),
+    router,
+    apolloClient,
+  } as RenderResult & RouterResult & ApolloClientResult;
+};
+
 export const renderHookWithRouter = <
   Result,
   Props,
