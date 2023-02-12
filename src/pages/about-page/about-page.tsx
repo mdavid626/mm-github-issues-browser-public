@@ -8,7 +8,7 @@ const AboutPage: React.FC = () => (
     <Header />
     <div className="AboutPage-content">
       <div className="AboutPage-description">
-        Simple React app to browser GitHub Issues
+        Simple React app to browse GitHub Issues
       </div>
       <div>
         Created by: <a href="https://mdavid626.com">Dávid Molnár</a>
