@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issue-list-item should render 1`] = `
+<DocumentFragment>
+  <div
+    class="IssueListItem"
+  >
+    <div
+      class="IssueListItem-titleAndState"
+    >
+      <div
+        class="IssueListItem-title"
+      >
+        Bug: Failed when set homepage in package.json or set PUBLIC_URL
+      </div>
+      <div>
+        issue-state-badge
+      </div>
+    </div>
+    <div
+      class="IssueListItem-detail"
+    >
+      <div>
+        #26126
+      </div>
+      <div>
+        08.02.2023 09:50
+      </div>
+      <div>
+        testAuthor1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
