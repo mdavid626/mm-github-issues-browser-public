@@ -10,7 +10,7 @@ exports[`issue-comment-item should render 1`] = `
       class="IssueCommentItem-detail"
     >
       <div>
-        testUser1
+        testAuthor1
       </div>
       <div>
         12.02.2023 10:43
