@@ -33,7 +33,7 @@ const IssueComments: React.FC<{
         </div>
       )}
       {isFetchingMoreComments && (
-        <div className="IssueComments-loading">Loading...</div>
+        <div className="IssueComments-loading">loading...</div>
       )}
     </div>
   );

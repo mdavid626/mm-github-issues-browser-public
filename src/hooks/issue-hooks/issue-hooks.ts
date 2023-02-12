@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { ApolloError } from '@apollo/client/errors';
 import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -63,27 +63,23 @@ export const useIssue = (
 export const useFetchMoreIssueComment = (
   issueNumber: number
 ): [(commentsCursor: string) => void, boolean] => {
-  const { fetchMore: queryFetchMore, loading } = useQuery<IssueQueryResult>(
-    GetCommentsQuery,
-    {
-      variables: {
-        issueNumber,
-      },
-      notifyOnNetworkStatusChange: true,
-      skip: true,
-      onError: (error) => {
-        alert(error.message);
-      },
-    }
-  );
+  const [load, { loading }] = useLazyQuery<IssueQueryResult>(GetCommentsQuery, {
+    variables: {
+      issueNumber,
+    },
+    fetchPolicy: 'cache-and-network',
+    onError: (error) => {
+      alert(error.message);
+    },
+  });
   const fetchMore = useCallback(
     (commentsCursor: string) =>
-      queryFetchMore({
+      load({
         variables: {
           commentsCursor,
         },
       }),
-    [queryFetchMore]
+    [load]
   );
   return [fetchMore, loading];
 };
