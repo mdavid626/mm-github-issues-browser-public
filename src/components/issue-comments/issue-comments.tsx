@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFetchMoreIssueComment } from '../../hooks/issue-hooks/issue-hooks';
 import { Issue } from '../../types/issue';
-import IssueCommentItem from '../issue-comment-item/issue-comment-item';
+import IssueCommentsItem from '../issue-comments-item/issue-comments-item';
 import './issue-comments.css';
 
 const IssueComments: React.FC<{
@@ -20,7 +20,7 @@ const IssueComments: React.FC<{
       ) : (
         <div className="IssueComments-comments">
           {comments.nodes.map((comment) => (
-            <IssueCommentItem key={comment.id} comment={comment} />
+            <IssueCommentsItem key={comment.id} comment={comment} />
           ))}
         </div>
       )}

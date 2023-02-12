@@ -3,16 +3,16 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { useFetchMoreIssueComment } from '../../hooks/issue-hooks/issue-hooks';
 import { noCommentsIssue1, testIssue1 } from '../../test-data/issues';
-import IssueCommentItem from '../issue-comment-item/issue-comment-item';
+import IssueCommentsItem from '../issue-comments-item/issue-comments-item';
 import IssueComments from './issue-comments';
 
 jest.mock('../../hooks/issue-hooks/issue-hooks');
-jest.mock('../issue-comment-item/issue-comment-item');
+jest.mock('../issue-comments-item/issue-comments-item');
 
 describe('issue-comments', () => {
   beforeEach(() => {
-    (IssueCommentItem as jest.Mock).mockReturnValue(
-      <div>issue-comment-item</div>
+    (IssueCommentsItem as jest.Mock).mockReturnValue(
+      <div>issue-comments-item</div>
     );
     (useFetchMoreIssueComment as jest.Mock).mockReturnValue([jest.fn(), false]);
   });
@@ -28,12 +28,12 @@ describe('issue-comments', () => {
     );
     expect(asFragment()).toMatchSnapshot();
     expect(useFetchMoreIssueComment).toHaveBeenCalledWith(testIssue1.number);
-    expect(IssueCommentItem).toHaveBeenCalledTimes(2);
-    expect(IssueCommentItem).toHaveBeenCalledWith(
+    expect(IssueCommentsItem).toHaveBeenCalledTimes(2);
+    expect(IssueCommentsItem).toHaveBeenCalledWith(
       { comment: testIssue1.comments.nodes[0] },
       {}
     );
-    expect(IssueCommentItem).toHaveBeenCalledWith(
+    expect(IssueCommentsItem).toHaveBeenCalledWith(
       { comment: testIssue1.comments.nodes[1] },
       {}
     );
@@ -47,7 +47,7 @@ describe('issue-comments', () => {
       />
     );
     expect(screen.getByText('No comments yet')).toBeVisible();
-    expect(IssueCommentItem).not.toHaveBeenCalled();
+    expect(IssueCommentsItem).not.toHaveBeenCalled();
   });
 
   it('should fetch more comments when button clicked', async () => {

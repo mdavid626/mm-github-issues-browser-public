@@ -14,10 +14,10 @@ exports[`issue-comments should render 1`] = `
       class="IssueComments-comments"
     >
       <div>
-        issue-comment-item
+        issue-comments-item
       </div>
       <div>
-        issue-comment-item
+        issue-comments-item
       </div>
     </div>
     <div
