@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`issue-comment-item should render 1`] = `
+exports[`issue-comment-list-item should render 1`] = `
 <DocumentFragment>
   <div
-    class="IssueCommentItem"
-    data-testid="IssueCommentItem"
+    class="IssueCommentListItem"
+    data-testid="IssueCommentListItem"
   >
     <div
-      class="IssueCommentItem-detail"
+      class="IssueCommentListItem-detail"
     >
       <div>
         testAuthor1
@@ -17,7 +17,7 @@ exports[`issue-comment-item should render 1`] = `
       </div>
     </div>
     <div
-      class="IssueCommentItem-comment"
+      class="IssueCommentListItem-comment"
     >
       issue comment 1
     </div>

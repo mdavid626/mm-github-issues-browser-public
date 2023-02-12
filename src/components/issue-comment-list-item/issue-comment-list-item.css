@@ -1,9 +1,9 @@
-.IssueCommentItem {
+.IssueCommentListItem {
   display: flex;
   flex-direction: column;
 }
 
-.IssueCommentItem-detail {
+.IssueCommentListItem-detail {
   display: flex;
   gap: var(--space2);
   border: 1px solid var(--secondary-color);
@@ -14,7 +14,7 @@
   border-top-right-radius: 5px;
 }
 
-.IssueCommentItem-comment {
+.IssueCommentListItem-comment {
   white-space: pre-wrap;
   font-family: monospace;
   padding: var(--space2);

@@ -6,16 +6,16 @@ import {
   testIssueComments1,
   testEmptyIssueComments,
 } from '../../test-data/issue-comments';
-import IssueCommentItem from '../issue-comment-item/issue-comment-item';
+import IssueCommentListItem from '../issue-comment-list-item/issue-comment-list-item';
 import IssueCommentList from './issue-comment-list';
 
 jest.mock('../../hooks/issue-hooks/issue-hooks');
-jest.mock('../issue-comment-item/issue-comment-item');
+jest.mock('../issue-comment-list-item/issue-comment-list-item');
 
 describe('issue-comment-list', () => {
   beforeEach(() => {
-    (IssueCommentItem as jest.Mock).mockReturnValue(
-      <div>issue-comment-item</div>
+    (IssueCommentListItem as jest.Mock).mockReturnValue(
+      <div>issue-comment-list-item</div>
     );
     (useFetchMoreIssueComment as jest.Mock).mockReturnValue([jest.fn(), false]);
   });
@@ -28,12 +28,12 @@ describe('issue-comment-list', () => {
     );
     expect(asFragment()).toMatchSnapshot();
     expect(useFetchMoreIssueComment).toHaveBeenCalledWith(1);
-    expect(IssueCommentItem).toHaveBeenCalledTimes(2);
-    expect(IssueCommentItem).toHaveBeenCalledWith(
+    expect(IssueCommentListItem).toHaveBeenCalledTimes(2);
+    expect(IssueCommentListItem).toHaveBeenCalledWith(
       { comment: testIssueComments1.nodes[0] },
       {}
     );
-    expect(IssueCommentItem).toHaveBeenCalledWith(
+    expect(IssueCommentListItem).toHaveBeenCalledWith(
       { comment: testIssueComments1.nodes[1] },
       {}
     );
@@ -44,7 +44,7 @@ describe('issue-comment-list', () => {
       <IssueCommentList issueNumber={1} comments={testEmptyIssueComments} />
     );
     expect(screen.getByText('No comments yet')).toBeVisible();
-    expect(IssueCommentItem).not.toHaveBeenCalled();
+    expect(IssueCommentListItem).not.toHaveBeenCalled();
   });
 
   it('should fetch more comments when button clicked', async () => {
