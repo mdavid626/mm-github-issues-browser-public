@@ -1,21 +1,21 @@
-.IssueComments {
+.IssueCommentList {
   display: flex;
   flex-direction: column;
   gap: var(--space3);
 }
 
-.IssueComments-title {
+.IssueCommentList-title {
   font-size: 20px;
   font-weight: bold;
 }
 
-.IssueComments-comments {
+.IssueCommentList-comments {
   display: flex;
   flex-direction: column;
   gap: var(--space3);
 }
 
-.IssueComments-loadMore {
+.IssueCommentList-loadMore {
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
@@ -23,7 +23,7 @@
   color: var(--primary-color);
 }
 
-.IssueComments-loading {
+.IssueCommentList-loading {
   font-size: 18px;
   font-weight: bold;
   align-self: center;

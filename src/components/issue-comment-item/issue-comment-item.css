@@ -1,9 +1,9 @@
-.IssueCommentsItem {
+.IssueCommentItem {
   display: flex;
   flex-direction: column;
 }
 
-.IssueCommentsItem-detail {
+.IssueCommentItem-detail {
   display: flex;
   gap: var(--space2);
   border: 1px solid var(--secondary-color);
@@ -14,7 +14,7 @@
   border-top-right-radius: 5px;
 }
 
-.IssueCommentsItem-comment {
+.IssueCommentItem-comment {
   white-space: pre-wrap;
   font-family: monospace;
   padding: var(--space2);

@@ -1,4 +1,4 @@
-import { IssueComment, IssueQueryComments } from '../types/issue-comment';
+import { IssueComment, IssueComments } from '../types/issue-comment';
 import { testAuthor1 } from './authors';
 
 export const testIssueComment1: IssueComment = {
@@ -15,7 +15,7 @@ export const testIssueComment2: IssueComment = {
   author: testAuthor1,
 };
 
-export const testIssueComments1: IssueQueryComments = {
+export const testIssueComments1: IssueComments = {
   nodes: [testIssueComment1, testIssueComment2],
   pageInfo: {
     hasNextPage: true,
@@ -24,7 +24,7 @@ export const testIssueComments1: IssueQueryComments = {
   totalCount: 2,
 };
 
-export const testEmptyIssueQueryComments: IssueQueryComments = {
+export const testEmptyIssueComments: IssueComments = {
   nodes: [],
   pageInfo: {
     hasNextPage: false,

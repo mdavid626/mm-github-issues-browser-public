@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
-import IssueItem from '../../components/issue-item/issue-item';
+import IssueDetail from '../../components/issue-detail/issue-detail';
 import PageLoader from '../../components/page-loader/page-loader';
 import { useIssue, useIssueNumber } from '../../hooks/issue-hooks/issue-hooks';
 import './issue-page.css';
@@ -26,7 +26,7 @@ const IssuePage = () => {
             >
               « back to issues
             </div>
-            <IssueItem issue={queryResult!.repository.issue} />
+            <IssueDetail issue={queryResult!.repository.issue} />
           </div>
         )}
       </PageLoader>

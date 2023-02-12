@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import FiltersBar from '../../components/filters-bar/filters-bar';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
-import IssuesItem from '../../components/issues-item/issues-item';
+import IssueListItem from '../../components/issue-list-item/issue-list-item';
 import PageLoader from '../../components/page-loader/page-loader';
 import { useFilters } from '../../hooks/filter-hooks/filter-hooks';
 import { useIssues } from '../../hooks/issue-hooks/issue-hooks';
@@ -42,7 +42,7 @@ const IssuesPage: React.FC = () => {
                       className="IssuesPage-issue"
                       key={issue.id}
                     >
-                      <IssuesItem issue={issue} />
+                      <IssueListItem issue={issue} />
                     </Link>
                   ))}
                 </div>

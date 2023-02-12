@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`issue-comments should render 1`] = `
+exports[`issue-comment-list should render 1`] = `
 <DocumentFragment>
   <div
-    class="IssueComments"
+    class="IssueCommentList"
   >
     <div
-      class="IssueComments-title"
+      class="IssueCommentList-title"
     >
       Comments (2)
     </div>
     <div
-      class="IssueComments-comments"
+      class="IssueCommentList-comments"
     >
       <div>
-        issue-comments-item
+        issue-comment-item
       </div>
       <div>
-        issue-comments-item
+        issue-comment-item
       </div>
     </div>
     <div
-      class="IssueComments-loadMore"
+      class="IssueCommentList-loadMore"
     >
       load more comments
     </div>

@@ -1,34 +1,34 @@
-.IssueItem {
+.IssueDetail {
   color: #222;
   display: flex;
   flex-direction: column;
   gap: var(--space3);
 }
 
-.IssueItem-header {
+.IssueDetail-header {
   display: flex;
   flex-direction: column;
   gap: var(--space2);
 }
 
-.IssueItem-titleAndState {
+.IssueDetail-titleAndState {
   display: flex;
   gap: var(--space2);
   align-items: center;
 }
 
-.IssueItem-title {
+.IssueDetail-title {
   font-size: 18px;
   font-weight: bold;
 }
 
-.IssueItem-detail {
+.IssueDetail-detail {
   display: flex;
   gap: var(--space2);
   font-size: 12px;
 }
 
-.IssueItem-body {
+.IssueDetail-body {
   white-space: pre-wrap;
   font-family: monospace;
   border: 1px solid var(--secondary-color);

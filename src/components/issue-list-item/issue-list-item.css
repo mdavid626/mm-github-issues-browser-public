@@ -1,4 +1,4 @@
-.IssuesItem {
+.IssueListItem {
   color: #222;
   padding: var(--space2) 0;
   display: flex;
@@ -6,17 +6,17 @@
   gap: var(--space1);
 }
 
-.IssuesItem-titleAndState {
+.IssueListItem-titleAndState {
   display: flex;
   gap: var(--space2);
   align-items: center;
 }
 
-.IssuesItem-title {
+.IssueListItem-title {
   font-size: 18px;
 }
 
-.IssuesItem-detail {
+.IssueListItem-detail {
   display: flex;
   gap: var(--space3);
   font-size: 12px;

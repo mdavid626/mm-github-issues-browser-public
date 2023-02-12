@@ -4,18 +4,18 @@ import React from 'react';
 import { useFetchMoreIssueComment } from '../../hooks/issue-hooks/issue-hooks';
 import {
   testIssueComments1,
-  testEmptyIssueQueryComments,
+  testEmptyIssueComments,
 } from '../../test-data/issue-comments';
-import IssueCommentsItem from '../issue-comments-item/issue-comments-item';
-import IssueComments from './issue-comments';
+import IssueCommentItem from '../issue-comment-item/issue-comment-item';
+import IssueCommentList from './issue-comment-list';
 
 jest.mock('../../hooks/issue-hooks/issue-hooks');
-jest.mock('../issue-comments-item/issue-comments-item');
+jest.mock('../issue-comment-item/issue-comment-item');
 
-describe('issue-comments', () => {
+describe('issue-comment-list', () => {
   beforeEach(() => {
-    (IssueCommentsItem as jest.Mock).mockReturnValue(
-      <div>issue-comments-item</div>
+    (IssueCommentItem as jest.Mock).mockReturnValue(
+      <div>issue-comment-item</div>
     );
     (useFetchMoreIssueComment as jest.Mock).mockReturnValue([jest.fn(), false]);
   });
@@ -24,16 +24,16 @@ describe('issue-comments', () => {
 
   it('should render', () => {
     const { asFragment } = render(
-      <IssueComments issueNumber={1} comments={testIssueComments1} />
+      <IssueCommentList issueNumber={1} comments={testIssueComments1} />
     );
     expect(asFragment()).toMatchSnapshot();
     expect(useFetchMoreIssueComment).toHaveBeenCalledWith(1);
-    expect(IssueCommentsItem).toHaveBeenCalledTimes(2);
-    expect(IssueCommentsItem).toHaveBeenCalledWith(
+    expect(IssueCommentItem).toHaveBeenCalledTimes(2);
+    expect(IssueCommentItem).toHaveBeenCalledWith(
       { comment: testIssueComments1.nodes[0] },
       {}
     );
-    expect(IssueCommentsItem).toHaveBeenCalledWith(
+    expect(IssueCommentItem).toHaveBeenCalledWith(
       { comment: testIssueComments1.nodes[1] },
       {}
     );
@@ -41,10 +41,10 @@ describe('issue-comments', () => {
 
   it('should render no comments message when no comments', () => {
     render(
-      <IssueComments issueNumber={1} comments={testEmptyIssueQueryComments} />
+      <IssueCommentList issueNumber={1} comments={testEmptyIssueComments} />
     );
     expect(screen.getByText('No comments yet')).toBeVisible();
-    expect(IssueCommentsItem).not.toHaveBeenCalled();
+    expect(IssueCommentItem).not.toHaveBeenCalled();
   });
 
   it('should fetch more comments when button clicked', async () => {
@@ -53,7 +53,7 @@ describe('issue-comments', () => {
       fetchMoreIssueComment,
       false,
     ]);
-    render(<IssueComments issueNumber={1} comments={testIssueComments1} />);
+    render(<IssueCommentList issueNumber={1} comments={testIssueComments1} />);
     await userEvent.click(screen.getByText('load more comments'));
     expect(fetchMoreIssueComment).toHaveBeenCalledWith(
       testIssueComments1.pageInfo.endCursor
@@ -62,7 +62,7 @@ describe('issue-comments', () => {
 
   it('should show loading spinner when loading more comments', () => {
     (useFetchMoreIssueComment as jest.Mock).mockReturnValue([jest.fn(), true]);
-    render(<IssueComments issueNumber={1} comments={testIssueComments1} />);
+    render(<IssueCommentList issueNumber={1} comments={testIssueComments1} />);
     expect(screen.getByText('loading...')).toBeVisible();
     expect(screen.queryByText('load more comments')).toBe(null);
   });

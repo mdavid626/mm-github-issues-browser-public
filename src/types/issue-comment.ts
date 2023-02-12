@@ -8,7 +8,7 @@ export type IssueComment = {
   author: Author;
 };
 
-export type IssueQueryComments = {
+export type IssueComments = {
   nodes: IssueComment[];
   pageInfo: PageInfo;
   totalCount: number;

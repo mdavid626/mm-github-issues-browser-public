@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`issue-item should render 1`] = `
+exports[`issue-detail should render 1`] = `
 <DocumentFragment>
   <div
-    class="IssueItem"
+    class="IssueDetail"
   >
     <div
-      class="IssueItem-header"
+      class="IssueDetail-header"
     >
       <div
-        class="IssueItem-titleAndState"
+        class="IssueDetail-titleAndState"
       >
         <div
-          class="IssueItem-title"
+          class="IssueDetail-title"
         >
           Bug: Failed when set homepage in package.json or set PUBLIC_URL
         </div>
@@ -21,7 +21,7 @@ exports[`issue-item should render 1`] = `
         </div>
       </div>
       <div
-        class="IssueItem-detail"
+        class="IssueDetail-detail"
       >
         <div>
           #26126
@@ -35,12 +35,12 @@ exports[`issue-item should render 1`] = `
       </div>
     </div>
     <div
-      class="IssueItem-body"
+      class="IssueDetail-body"
     >
       test issue1 body
     </div>
     <div>
-      issue-comments
+      issue-comment-list
     </div>
   </div>
 </DocumentFragment>

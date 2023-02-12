@@ -1,5 +1,5 @@
 import { Author } from './author';
-import { IssueComment, IssueQueryComments } from './issue-comment';
+import { IssueComment, IssueComments } from './issue-comment';
 import { PageInfo } from './pagination';
 
 export type IssueState = 'OPEN' | 'CLOSED';
@@ -13,7 +13,7 @@ export type Issue = {
   url: string;
   body: string;
   author: Author;
-  comments: IssueQueryComments;
+  comments: IssueComments;
 };
 
 export type IssueQueryResult = {
@@ -22,7 +22,7 @@ export type IssueQueryResult = {
   };
 };
 
-export type IssuesQueryItem = Pick<
+export type IssuesItem = Pick<
   Issue,
   'id' | 'createdAt' | 'title' | 'state' | 'number' | 'url' | 'author'
 >;
@@ -30,7 +30,7 @@ export type IssuesQueryItem = Pick<
 export type IssuesQueryResult = {
   search: {
     issueCount: number;
-    nodes: IssuesQueryItem[];
+    nodes: IssuesItem[];
     pageInfo: PageInfo;
   };
 };
