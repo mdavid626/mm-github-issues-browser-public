@@ -1,5 +1,5 @@
 import { Author } from './author';
-import { IssueComment } from './issue-comment';
+import { IssueComment, IssueQueryComments } from './issue-comment';
 import { PageInfo } from './pagination';
 
 export type IssueState = 'OPEN' | 'CLOSED';
@@ -13,11 +13,7 @@ export type Issue = {
   url: string;
   body: string;
   author: Author;
-  comments: {
-    nodes: IssueComment[];
-    pageInfo: PageInfo;
-    totalCount: number;
-  };
+  comments: IssueQueryComments;
 };
 
 export type IssueQueryResult = {

@@ -1,4 +1,4 @@
-import { IssueComment } from '../types/issue-comment';
+import { IssueComment, IssueQueryComments } from '../types/issue-comment';
 import { testAuthor1 } from './authors';
 
 export const testIssueComment1: IssueComment = {
@@ -13,4 +13,22 @@ export const testIssueComment2: IssueComment = {
   body: 'issue comment 2',
   createdAt: '2022-01-11T10:42:25.655Z',
   author: testAuthor1,
+};
+
+export const testIssueComments1: IssueQueryComments = {
+  nodes: [testIssueComment1, testIssueComment2],
+  pageInfo: {
+    hasNextPage: true,
+    endCursor: 'endCursor1',
+  },
+  totalCount: 2,
+};
+
+export const testEmptyIssueQueryComments: IssueQueryComments = {
+  nodes: [],
+  pageInfo: {
+    hasNextPage: false,
+    endCursor: 'endCursor1',
+  },
+  totalCount: 0,
 };
