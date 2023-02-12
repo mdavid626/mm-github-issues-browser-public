@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issue-hooks useIssue should load issue: query 1`] = `
+Array [
+  "https://api.github.com/graphql",
+  Object {
+    "body": "{\\"operationName\\":\\"getIssue\\",\\"variables\\":{\\"issueNumber\\":123},\\"query\\":\\"query getIssue($issueNumber: Int!) {\\\\n  repository(owner: \\\\\\"facebook\\\\\\", name: \\\\\\"react\\\\\\") {\\\\n    id\\\\n    issue(number: $issueNumber) {\\\\n      id\\\\n      createdAt\\\\n      title\\\\n      state\\\\n      number\\\\n      stateReason\\\\n      url\\\\n      body\\\\n      author {\\\\n        login\\\\n        __typename\\\\n      }\\\\n      comments(first: 3, orderBy: {field: UPDATED_AT, direction: DESC}) {\\\\n        nodes {\\\\n          id\\\\n          createdAt\\\\n          body\\\\n          author {\\\\n            login\\\\n            __typename\\\\n          }\\\\n          __typename\\\\n        }\\\\n        pageInfo {\\\\n          hasNextPage\\\\n          endCursor\\\\n          __typename\\\\n        }\\\\n        totalCount\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "headers": Object {
+      "accept": "*/*",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
+exports[`issue-hooks useIssue should load issue: query result 1`] = `
+Object {
+  "repository": Object {
+    "__typename": "Repository",
+    "id": "MDEwOlJlcG9zaXRvcnkxMDI3MDI1MA==",
+    "issue": Object {
+      "__typename": "Issue",
+      "author": Object {
+        "__typename": "User",
+        "login": "weidehai",
+      },
+      "body": "test issue result",
+      "comments": Object {
+        "__typename": "IssueCommentConnection",
+        "nodes": Array [],
+        "pageInfo": Object {
+          "__typename": "PageInfo",
+          "endCursor": null,
+          "hasNextPage": false,
+        },
+        "totalCount": 0,
+      },
+      "createdAt": "2023-02-12T05:31:50Z",
+      "id": "I_kwDOAJy2Ks5ePiI3",
+      "number": 26156,
+      "state": "CLOSED",
+      "stateReason": "COMPLETED",
+      "title": "Bug: build args parse error on powsershell",
+      "url": "https://github.com/facebook/react/issues/26156",
+    },
+  },
+}
+`;

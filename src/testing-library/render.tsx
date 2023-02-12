@@ -1,4 +1,9 @@
 /* istanbul ignore file */
+import {
+  ApolloClient,
+  ApolloProvider,
+  NormalizedCacheObject,
+} from '@apollo/client';
 import { InitialEntry, Location } from '@remix-run/router';
 import { Queries, queries } from '@testing-library/dom';
 import {
@@ -12,6 +17,7 @@ import {
 import React, { ReactElement } from 'react';
 import { MemoryRouter, useLocation, useNavigate } from 'react-router-dom';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
+import createApolloMemoryCache from '../apollo-memory-cache';
 
 type SimpleRouter = {
   location?: Location;
@@ -20,6 +26,10 @@ type SimpleRouter = {
 
 type RouterResult = {
   router: SimpleRouter;
+};
+
+type ApolloClientResult = {
+  apolloClient: ApolloClient<NormalizedCacheObject>;
 };
 
 export const renderWithRouter = (
@@ -77,5 +87,30 @@ export const renderHookWithRouter = <
       ...options,
     }),
     router,
+  };
+};
+
+export const renderHookWithQueryClient = <
+  Result,
+  Props,
+  Q extends Queries = typeof queries,
+  Container extends Element | DocumentFragment = HTMLElement,
+  BaseElement extends Element | DocumentFragment = Container
+>(
+  render: (initialProps: Props) => Result,
+  options?: RenderHookOptions<Props, Q, Container, BaseElement>
+): RenderHookResult<Result, Props> & ApolloClientResult => {
+  const apolloClient = new ApolloClient({
+    uri: 'https://api.github.com/graphql',
+    cache: createApolloMemoryCache(),
+  });
+  return {
+    ...renderHook(render, {
+      wrapper: ({ children }) => (
+        <ApolloProvider client={apolloClient}>{children}</ApolloProvider>
+      ),
+      ...options,
+    }),
+    apolloClient,
   };
 };
