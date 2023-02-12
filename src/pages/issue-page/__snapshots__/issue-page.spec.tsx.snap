@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issue-page should render 1`] = `
+<DocumentFragment>
+  <div
+    class="IssuePage"
+  >
+    <div>
+      header
+    </div>
+    <div
+      class="IssuePage-content"
+    >
+      <div
+        class="IssuePage-back"
+      >
+        « back to issues
+      </div>
+      <div>
+        issue-detail
+      </div>
+    </div>
+    <div>
+      footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`issue-page should render spinner when loading 1`] = `
+<DocumentFragment>
+  <div
+    class="IssuePage"
+  >
+    <div>
+      header
+    </div>
+    <img
+      alt="loading spinner"
+      class="PageLoader-spinner"
+      data-testid="PageLoader-spinner"
+      src="spinner.svg"
+    />
+    <div>
+      footer
+    </div>
+  </div>
+</DocumentFragment>
+`;

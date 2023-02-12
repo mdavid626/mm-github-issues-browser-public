@@ -1,4 +1,4 @@
-import { Issue, IssuesItem } from '../types/issue';
+import { Issue, IssueQueryResult, IssuesItem } from '../types/issue';
 import { testAuthor1 } from './authors';
 import { testIssueComments1 } from './issue-comments';
 
@@ -22,4 +22,10 @@ export const testIssuesItem1: IssuesItem = {
   number: 26126,
   url: 'https://github.com/facebook/react/issues/26126',
   author: testAuthor1,
+};
+
+export const testIssueQueryResult1: IssueQueryResult = {
+  repository: {
+    issue: testIssue1,
+  },
 };
