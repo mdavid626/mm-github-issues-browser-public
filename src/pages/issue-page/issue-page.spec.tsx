@@ -19,7 +19,7 @@ describe('issue-page', () => {
     (Header as jest.Mock).mockReturnValue(<div>header</div>);
     (IssueDetail as jest.Mock).mockReturnValue(<div>issue-detail</div>);
     (useIssueNumber as jest.Mock).mockReturnValue(1);
-    (useIssue as jest.Mock).mockReturnValue([testIssueQueryResult1, null]);
+    (useIssue as jest.Mock).mockReturnValue([testIssueQueryResult1, undefined]);
   });
   afterEach(cleanup);
   afterEach(jest.resetAllMocks);
@@ -38,7 +38,7 @@ describe('issue-page', () => {
   });
 
   it('should render spinner when loading', () => {
-    (useIssue as jest.Mock).mockReturnValue([null, null]);
+    (useIssue as jest.Mock).mockReturnValue([undefined, undefined]);
     const { asFragment } = renderWithRouter(<IssuePage />);
     expect(asFragment()).toMatchSnapshot();
     expect(Footer).toHaveBeenCalledWith({}, {});
@@ -47,7 +47,7 @@ describe('issue-page', () => {
   });
 
   it('should show error when error', () => {
-    (useIssue as jest.Mock).mockReturnValue([null, new Error('test error')]);
+    (useIssue as jest.Mock).mockReturnValue([undefined, new Error('test error')]);
     renderWithRouter(<IssuePage />);
     expect(screen.getByText('test error')).toBeVisible();
     expect(Footer).toHaveBeenCalledWith({}, {});

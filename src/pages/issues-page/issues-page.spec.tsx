@@ -37,7 +37,7 @@ describe('issues-page', () => {
     (useIssues as jest.Mock).mockReturnValue([
       testIssuesQueryResult1,
       false,
-      null,
+      undefined,
       jest.fn(),
     ]);
   });
@@ -72,7 +72,7 @@ describe('issues-page', () => {
     (useIssues as jest.Mock).mockReturnValue([
       undefined,
       false,
-      null,
+      undefined,
       jest.fn(),
     ]);
     const { asFragment } = renderWithRouter(<IssuesPage />);
@@ -118,7 +118,7 @@ describe('issues-page', () => {
     (useIssues as jest.Mock).mockReturnValue([
       testIssuesQueryResult1,
       false,
-      null,
+      undefined,
       fetchMore,
     ]);
     renderWithRouter(<IssuesPage />);
@@ -130,7 +130,7 @@ describe('issues-page', () => {
     (useIssues as jest.Mock).mockReturnValue([
       testEmptyIssuesQueryResult1,
       false,
-      null,
+      undefined,
       jest.fn(),
     ]);
     renderWithRouter(<IssuesPage />);
@@ -141,7 +141,7 @@ describe('issues-page', () => {
     (useIssues as jest.Mock).mockReturnValue([
       testIssuesQueryResult1,
       true,
-      null,
+      undefined,
       jest.fn(),
     ]);
     renderWithRouter(<IssuesPage />);
