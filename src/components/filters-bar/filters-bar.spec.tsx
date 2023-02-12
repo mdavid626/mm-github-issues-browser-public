@@ -41,6 +41,23 @@ describe('filters-bar', () => {
     });
   });
 
+  it('should be able to select all state filter', async () => {
+    const filters: Filters = {
+      ...testFilters1,
+      state: 'open',
+    };
+    const setFilters = jest.fn();
+    render(<FiltersBar filters={filters} setFilters={setFilters} />);
+    await userEvent.selectOptions(
+      screen.getByTestId('FiltersBar-state'),
+      'All'
+    );
+    expect(setFilters).toHaveBeenCalledWith({
+      ...filters,
+      state: null,
+    });
+  });
+
   it('should be able to search', async () => {
     const filters: Filters = {
       ...testFilters1,
