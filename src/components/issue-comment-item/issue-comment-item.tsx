@@ -10,7 +10,7 @@ const IssueCommentItem: React.FC<{
 }> = ({ comment, className }) => (
   <div
     className={classnames('IssueCommentItem', className)}
-    data-testId="IssueCommentItem"
+    data-testid="IssueCommentItem"
   >
     <div className="IssueCommentItem-detail">
       <div>{comment.author.login}</div>
