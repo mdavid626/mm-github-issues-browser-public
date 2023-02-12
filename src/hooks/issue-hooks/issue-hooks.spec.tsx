@@ -1,7 +1,10 @@
 import { act, waitFor } from '@testing-library/react';
+import { testFilters1 } from '../../test-data/filters';
 import {
   commentsQueryResult1,
   issueQueryResult1,
+  issuesQueryResult1,
+  loadMoreIssuesQueryResult1,
 } from '../../test-data/query-results';
 import {
   renderHookWithQueryClient,
@@ -98,6 +101,66 @@ describe('issue-hooks', () => {
       await waitFor(() => {
         expect(window.alert).toHaveBeenCalledWith('test error');
       });
+    });
+  });
+
+  describe('useIssues', () => {
+    it('should load issues', async () => {
+      fetchMock.mockResponse(JSON.stringify(issuesQueryResult1));
+      const { result } = renderHookWithQueryClient(() =>
+        useIssues(testFilters1)
+      );
+      expect(result.current).toEqual([
+        undefined,
+        true,
+        undefined,
+        expect.any(Function),
+      ]);
+      await waitFor(() => {
+        expect(result.current).toEqual([
+          expect.any(Object),
+          false,
+          undefined,
+          expect.any(Function),
+        ]);
+      });
+      expect(result.current[0]).toMatchSnapshot('query result');
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(fetchMock.mock.calls[0]).toMatchSnapshot('query');
+    });
+
+    it('should return error when error', async () => {
+      fetchMock.mockReject(new Error('test error'));
+      const { result } = renderHookWithQueryClient(() =>
+        useIssues(testFilters1)
+      );
+      expect(result.current).toEqual([
+        undefined,
+        true,
+        undefined,
+        expect.any(Function),
+      ]);
+      await waitFor(() => {
+        expect(result.current[2]).toEqual(expect.any(Object));
+      });
+    });
+
+    it('should load more issues', async () => {
+      fetchMock.mockResponseOnce(JSON.stringify(issuesQueryResult1));
+      fetchMock.mockResponseOnce(JSON.stringify(loadMoreIssuesQueryResult1));
+      const { result } = renderHookWithQueryClient(() =>
+        useIssues(testFilters1)
+      );
+      await waitFor(() => {
+        expect(result.current[0]).toEqual(expect.any(Object));
+      });
+      result.current[3]();
+      await waitFor(() => {
+        expect(result.current[0]?.search.nodes).toHaveLength(4);
+      });
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+      expect(fetchMock.mock.calls[1]).toMatchSnapshot('query');
+      expect(result.current[0]).toMatchSnapshot('query result');
     });
   });
 });

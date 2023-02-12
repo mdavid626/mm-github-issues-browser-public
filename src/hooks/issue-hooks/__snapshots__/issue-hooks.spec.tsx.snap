@@ -339,3 +339,143 @@ On Wed, Feb 8, 2023, 17:21 Aravind D ***@***.***> wrote:
   },
 }
 `;
+
+exports[`issue-hooks useIssues should load issues: query 1`] = `
+Array [
+  "https://api.github.com/graphql",
+  Object {
+    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":null,\\"search\\":\\"repo:facebook/react type:issue state:open (in:title test OR in:body test)\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "headers": Object {
+      "accept": "*/*",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
+exports[`issue-hooks useIssues should load issues: query result 1`] = `
+Object {
+  "search": Object {
+    "__typename": "SearchResultItemConnection",
+    "issueCount": 12030,
+    "nodes": Array [
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "weidehai",
+        },
+        "createdAt": "2023-02-12T05:31:50Z",
+        "id": "I_kwDOAJy2Ks5ePiI3",
+        "number": 26156,
+        "state": "CLOSED",
+        "title": "Bug: build args parse error on powsershell",
+        "url": "https://github.com/facebook/react/issues/26156",
+      },
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "Yi-19",
+        },
+        "createdAt": "2023-02-10T17:36:03Z",
+        "id": "I_kwDOAJy2Ks5eLh-t",
+        "number": 26149,
+        "state": "OPEN",
+        "title": "Unable to establish connection with the sandpack bundler.[DevTools Bug]: ",
+        "url": "https://github.com/facebook/react/issues/26149",
+      },
+    ],
+    "pageInfo": Object {
+      "__typename": "PageInfo",
+      "endCursor": "Y3Vyc29yOjI=",
+      "hasNextPage": true,
+    },
+  },
+}
+`;
+
+exports[`issue-hooks useIssues should load more issues: query 1`] = `
+Array [
+  "https://api.github.com/graphql",
+  Object {
+    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":\\"Y3Vyc29yOjI=\\",\\"search\\":\\"repo:facebook/react type:issue state:open (in:title test OR in:body test)\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "headers": Object {
+      "accept": "*/*",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
+exports[`issue-hooks useIssues should load more issues: query result 1`] = `
+Object {
+  "search": Object {
+    "__typename": "SearchResultItemConnection",
+    "issueCount": 12030,
+    "nodes": Array [
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "weidehai",
+        },
+        "createdAt": "2023-02-12T05:31:50Z",
+        "id": "I_kwDOAJy2Ks5ePiI3",
+        "number": 26156,
+        "state": "CLOSED",
+        "title": "Bug: build args parse error on powsershell",
+        "url": "https://github.com/facebook/react/issues/26156",
+      },
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "Yi-19",
+        },
+        "createdAt": "2023-02-10T17:36:03Z",
+        "id": "I_kwDOAJy2Ks5eLh-t",
+        "number": 26149,
+        "state": "OPEN",
+        "title": "Unable to establish connection with the sandpack bundler.[DevTools Bug]: ",
+        "url": "https://github.com/facebook/react/issues/26149",
+      },
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "naseer036",
+        },
+        "createdAt": "2023-02-10T11:33:26Z",
+        "id": "I_kwDOAJy2Ks5eJY9I",
+        "number": 26147,
+        "state": "OPEN",
+        "title": "Bug: react context not being provided to the components rendered that was passed as a prop.",
+        "url": "https://github.com/facebook/react/issues/26147",
+      },
+      Object {
+        "__typename": "Issue",
+        "author": Object {
+          "__typename": "User",
+          "login": "catchex",
+        },
+        "createdAt": "2023-02-10T08:23:57Z",
+        "id": "I_kwDOAJy2Ks5eIUJ8",
+        "number": 26146,
+        "state": "OPEN",
+        "title": "Bug: Why is ref.current null when I get it in the useFetch callback?",
+        "url": "https://github.com/facebook/react/issues/26146",
+      },
+    ],
+    "pageInfo": Object {
+      "__typename": "PageInfo",
+      "endCursor": "Y3Vyc29yOjQ=",
+      "hasNextPage": true,
+    },
+  },
+}
+`;

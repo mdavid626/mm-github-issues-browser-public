@@ -91,3 +91,78 @@ export const commentsQueryResult1 = {
     },
   },
 };
+
+export const issuesQueryResult1 = {
+  data: {
+    search: {
+      issueCount: 12030,
+      nodes: [
+        {
+          id: 'I_kwDOAJy2Ks5ePiI3',
+          createdAt: '2023-02-12T05:31:50Z',
+          title: 'Bug: build args parse error on powsershell',
+          state: 'CLOSED',
+          number: 26156,
+          url: 'https://github.com/facebook/react/issues/26156',
+          author: { login: 'weidehai', __typename: 'User' },
+          __typename: 'Issue',
+        },
+        {
+          id: 'I_kwDOAJy2Ks5eLh-t',
+          createdAt: '2023-02-10T17:36:03Z',
+          title:
+            'Unable to establish connection with the sandpack bundler.[DevTools Bug]: ',
+          state: 'OPEN',
+          number: 26149,
+          url: 'https://github.com/facebook/react/issues/26149',
+          author: { login: 'Yi-19', __typename: 'User' },
+          __typename: 'Issue',
+        },
+      ],
+      pageInfo: {
+        hasNextPage: true,
+        endCursor: 'Y3Vyc29yOjI=',
+        __typename: 'PageInfo',
+      },
+      __typename: 'SearchResultItemConnection',
+    },
+  },
+};
+
+export const loadMoreIssuesQueryResult1 = {
+  data: {
+    search: {
+      issueCount: 12030,
+      nodes: [
+        {
+          id: 'I_kwDOAJy2Ks5eJY9I',
+          createdAt: '2023-02-10T11:33:26Z',
+          title:
+            'Bug: react context not being provided to the components rendered that was passed as a prop.',
+          state: 'OPEN',
+          number: 26147,
+          url: 'https://github.com/facebook/react/issues/26147',
+          author: { login: 'naseer036', __typename: 'User' },
+          __typename: 'Issue',
+        },
+        {
+          id: 'I_kwDOAJy2Ks5eIUJ8',
+          createdAt: '2023-02-10T08:23:57Z',
+          title:
+            'Bug: Why is ref.current null when I get it in the useFetch callback?',
+          state: 'OPEN',
+          number: 26146,
+          url: 'https://github.com/facebook/react/issues/26146',
+          author: { login: 'catchex', __typename: 'User' },
+          __typename: 'Issue',
+        },
+      ],
+      pageInfo: {
+        hasNextPage: true,
+        endCursor: 'Y3Vyc29yOjQ=',
+        __typename: 'PageInfo',
+      },
+      __typename: 'SearchResultItemConnection',
+    },
+  },
+};
