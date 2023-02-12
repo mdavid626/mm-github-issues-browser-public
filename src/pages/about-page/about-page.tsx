@@ -8,12 +8,14 @@ const AboutPage: React.FC = () => (
     <Header />
     <div className="AboutPage-content">
       <div className="AboutPage-description">
-        Simple React app created for MediaMarkt
+        Simple React app to browser GitHub Issues
       </div>
       <div>
         Created by: <a href="https://mdavid626.com">Dávid Molnár</a>
       </div>
-      <a href="https://github.com/mdavid626/mediamarkt-task">Source Code</a>
+      <a href="https://github.com/mdavid626/mm-github-issues-browser">
+        Source Code
+      </a>
     </div>
     <Footer />
   </div>

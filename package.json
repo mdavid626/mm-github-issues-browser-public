@@ -1,5 +1,5 @@
 {
-  "name": "mediamarkt-task",
+  "name": "mm-github-issues-browser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -76,5 +76,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://mdavid626.github.io/mediamarkt-task/"
+  "homepage": "https://mdavid626.github.io/mm-github-issues-browser/"
 }

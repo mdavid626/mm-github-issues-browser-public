@@ -10,9 +10,9 @@ describe('[Acceptance] about-page', () => {
   it('should render', async () => {
     renderWithRouter(<Routes />, undefined, ['/about']);
     expect(
-      await screen.findByText('Simple React app created for MediaMarkt')
+      await screen.findByText('Simple React app to browser GitHub Issues')
     ).toBeVisible();
-    expect(screen.getByText('MediaMarkt Interview Task')).toBeVisible();
+    expect(screen.getByText('GitHub Issues Browser')).toBeVisible();
     expect(screen.getByText('React GitHub Issues')).toBeVisible();
     expect(screen.getByText('About')).toBeVisible();
     expect(screen.getByText('Created by:')).toBeVisible();
