@@ -23,6 +23,13 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <ApolloProvider client={client}>
+        <div
+          onClick={() => {
+            console.log(client.cache);
+          }}
+        >
+          test
+        </div>
         <HashRouter>
           <Routes />
         </HashRouter>

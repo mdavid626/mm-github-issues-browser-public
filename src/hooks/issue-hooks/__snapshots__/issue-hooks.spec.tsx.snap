@@ -1,5 +1,195 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`issue-hooks useFetchMoreIssueComment should fetch more comments: issue 1`] = `
+Object {
+  "repository": Object {
+    "__typename": "Repository",
+    "id": "MDEwOlJlcG9zaXRvcnkxMDI3MDI1MA==",
+    "issue": Object {
+      "__typename": "Issue",
+      "author": Object {
+        "__typename": "User",
+        "login": "ThanhPhucHuynh",
+      },
+      "body": "<!--
+  Please provide a clear and concise description of what the bug is. Include
+  screenshots if needed. Please test using the latest version of the relevant
+  React packages to make sure your issue has not already been fixed.
+-->
+I want to use basePath in React like Nextjs: [Nextjs basePath](https://nextjs.org/docs/api-reference/next.config.js/basepath)
+React version: 18.2
+basePath:  test
+
+## Steps To Reproduce
+
+1. create react app and add homepage like 
+\`\`\`
+  .....
+  \\"homepage\\": \\"/test\\",
+  ....
+\`\`\`
+2. build and run with the command: \`serve -s build -l 44841 \`
+3. access in the browser
+<!--
+  Your bug will get fixed much faster if we can run your code and it doesn't
+  have dependencies other than React. Issues without reproduction steps or
+  code examples may be immediately closed as not actionable.
+-->
+
+Link to code example: None
+
+<!--
+  Please provide a CodeSandbox (https://codesandbox.io/s/new), a link to a
+  repository on GitHub, or provide a minimal code example that reproduces the
+  problem. You may provide a screenshot of the application if you think it is
+  relevant to your bug report. Here are some tips for providing a minimal
+  example: https://stackoverflow.com/help/mcve.
+-->
+
+## The current behavior
+![image](https://user-images.githubusercontent.com/48717211/217479112-4bfa388b-0ef0-4ea6-ad84-6c490ae4e98f.png)
+
+## The expected behavior
+It is okay when \`npm run start\`
+but failed when built
+
+Note: It's still okay when: \` \\"homepage\\": \\"http://localhost:45131\\",\`
+not work:  \\"homepage\\": \\"http://localhost:45131/test\\" ",
+      "comments": Object {
+        "__typename": "IssueCommentConnection",
+        "nodes": Array [
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "eps1lon",
+            },
+            "body": "Support requests filed as GitHub issues often go unanswered. We want you to find the answer you're looking for, so we suggest the following alternatives:
+
+Coding Questions
+If you have a coding question related to React and React DOM, it might be better suited for Stack Overflow. It's a great place to browse through frequent questions about using React, as well as ask for help with specific questions.
+
+https://stackoverflow.com/questions/tagged/react
+
+Talk to other React developers
+There are many online forums which are a great place for discussion about best practices and application architecture as well as the future of React.
+
+https://reactjs.org/community/support.html",
+            "createdAt": "2023-02-08T10:52:54Z",
+            "id": "IC_kwDOAJy2Ks5UyCVC",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "ThanhPhucHuynh",
+            },
+            "body": "I tried, just work in dev
+
+On Wed, Feb 8, 2023, 17:21 Aravind D ***@***.***> wrote:
+
+> how about building like this \\"homepage\\": \\"http://localhost:45131/test\\" ?
+> Does that work?
+>
+> —
+> Reply to this email directly, view it on GitHub
+> <https://github.com/facebook/react/issues/26126#issuecomment-1422363579>,
+> or unsubscribe
+> <https://github.com/notifications/unsubscribe-auth/ALTV3G6FCM4GWFEYVFXSXZLWWNXTPANCNFSM6AAAAAAUU66TOU>
+> .
+> You are receiving this because you authored the thread.Message ID:
+> ***@***.***>
+>
+",
+            "createdAt": "2023-02-08T10:43:59Z",
+            "id": "IC_kwDOAJy2Ks5Ux_nZ",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "arav-ind",
+            },
+            "body": "how about building like this \`\\"homepage\\": \\"http://localhost:45131/test\\"\` ? Does that work?
+",
+            "createdAt": "2023-02-08T10:21:30Z",
+            "id": "IC_kwDOAJy2Ks5Ux4u7",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "ThanhPhucHuynh",
+            },
+            "body": "> Are you using react-router-dom? If yes, try adding the attribute basename='/test' to BrowserRouter.
+> 
+> \`\`\`
+> <BrowserRouter basename='/test'>
+>   <Routes>
+>      <Route>
+>   </Routes>
+> </BrowserRouter>
+> \`\`\`
+
+I tried but it does not work. I follow [deploying React app into a subdirectory](https://skryvets.com/blog/2018/09/20/an-elegant-solution-of-deploying-react-app-into-a-subdirectory/)
+not work when built and serve it",
+            "createdAt": "2023-02-08T10:10:01Z",
+            "id": "IC_kwDOAJy2Ks5Ux0zh",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "arav-ind",
+            },
+            "body": "Are you using react-router-dom? If yes, try adding the attribute basename='/test' to BrowserRouter.
+
+\`\`\`
+<BrowserRouter basename='/test'>
+  <Routes>
+     <Route>
+  </Routes>
+</BrowserRouter>
+\`\`\`
+",
+            "createdAt": "2023-02-08T09:58:14Z",
+            "id": "IC_kwDOAJy2Ks5Uxwq-",
+          },
+        ],
+        "pageInfo": Object {
+          "__typename": "PageInfo",
+          "endCursor": "Y3Vyc29yOnYyOpK5MjAyMy0wMi0wOFQxMDo1ODoxNCswMTowMM5Uxwq-",
+          "hasNextPage": false,
+        },
+        "totalCount": 5,
+      },
+      "createdAt": "2023-02-08T08:50:14Z",
+      "id": "I_kwDOAJy2Ks5d65oG",
+      "number": 26126,
+      "state": "CLOSED",
+      "stateReason": "NOT_PLANNED",
+      "title": "Bug: Failed when set \\"homepage\\" in package.json or set PUBLIC_URL",
+      "url": "https://github.com/facebook/react/issues/26126",
+    },
+  },
+}
+`;
+
+exports[`issue-hooks useFetchMoreIssueComment should fetch more comments: query 1`] = `
+Array [
+  "https://api.github.com/graphql",
+  Object {
+    "body": "{\\"operationName\\":\\"getIssueComments\\",\\"variables\\":{\\"issueNumber\\":123,\\"commentsCursor\\":\\"testCursor1\\"},\\"query\\":\\"query getIssueComments($issueNumber: Int!, $commentsCursor: String) {\\\\n  repository(owner: \\\\\\"facebook\\\\\\", name: \\\\\\"react\\\\\\") {\\\\n    id\\\\n    issue(number: $issueNumber) {\\\\n      id\\\\n      comments(\\\\n        first: 3\\\\n        after: $commentsCursor\\\\n        orderBy: {field: UPDATED_AT, direction: DESC}\\\\n      ) {\\\\n        nodes {\\\\n          id\\\\n          createdAt\\\\n          body\\\\n          author {\\\\n            login\\\\n            __typename\\\\n          }\\\\n          __typename\\\\n        }\\\\n        pageInfo {\\\\n          hasNextPage\\\\n          endCursor\\\\n          __typename\\\\n        }\\\\n        totalCount\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "headers": Object {
+      "accept": "*/*",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+    "signal": AbortSignal {},
+  },
+]
+`;
+
 exports[`issue-hooks useIssue should load issue: query 1`] = `
 Array [
   "https://api.github.com/graphql",
@@ -24,26 +214,127 @@ Object {
       "__typename": "Issue",
       "author": Object {
         "__typename": "User",
-        "login": "weidehai",
+        "login": "ThanhPhucHuynh",
       },
-      "body": "test issue result",
+      "body": "<!--
+  Please provide a clear and concise description of what the bug is. Include
+  screenshots if needed. Please test using the latest version of the relevant
+  React packages to make sure your issue has not already been fixed.
+-->
+I want to use basePath in React like Nextjs: [Nextjs basePath](https://nextjs.org/docs/api-reference/next.config.js/basepath)
+React version: 18.2
+basePath:  test
+
+## Steps To Reproduce
+
+1. create react app and add homepage like 
+\`\`\`
+  .....
+  \\"homepage\\": \\"/test\\",
+  ....
+\`\`\`
+2. build and run with the command: \`serve -s build -l 44841 \`
+3. access in the browser
+<!--
+  Your bug will get fixed much faster if we can run your code and it doesn't
+  have dependencies other than React. Issues without reproduction steps or
+  code examples may be immediately closed as not actionable.
+-->
+
+Link to code example: None
+
+<!--
+  Please provide a CodeSandbox (https://codesandbox.io/s/new), a link to a
+  repository on GitHub, or provide a minimal code example that reproduces the
+  problem. You may provide a screenshot of the application if you think it is
+  relevant to your bug report. Here are some tips for providing a minimal
+  example: https://stackoverflow.com/help/mcve.
+-->
+
+## The current behavior
+![image](https://user-images.githubusercontent.com/48717211/217479112-4bfa388b-0ef0-4ea6-ad84-6c490ae4e98f.png)
+
+## The expected behavior
+It is okay when \`npm run start\`
+but failed when built
+
+Note: It's still okay when: \` \\"homepage\\": \\"http://localhost:45131\\",\`
+not work:  \\"homepage\\": \\"http://localhost:45131/test\\" ",
       "comments": Object {
         "__typename": "IssueCommentConnection",
-        "nodes": Array [],
+        "nodes": Array [
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "eps1lon",
+            },
+            "body": "Support requests filed as GitHub issues often go unanswered. We want you to find the answer you're looking for, so we suggest the following alternatives:
+
+Coding Questions
+If you have a coding question related to React and React DOM, it might be better suited for Stack Overflow. It's a great place to browse through frequent questions about using React, as well as ask for help with specific questions.
+
+https://stackoverflow.com/questions/tagged/react
+
+Talk to other React developers
+There are many online forums which are a great place for discussion about best practices and application architecture as well as the future of React.
+
+https://reactjs.org/community/support.html",
+            "createdAt": "2023-02-08T10:52:54Z",
+            "id": "IC_kwDOAJy2Ks5UyCVC",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "ThanhPhucHuynh",
+            },
+            "body": "I tried, just work in dev
+
+On Wed, Feb 8, 2023, 17:21 Aravind D ***@***.***> wrote:
+
+> how about building like this \\"homepage\\": \\"http://localhost:45131/test\\" ?
+> Does that work?
+>
+> —
+> Reply to this email directly, view it on GitHub
+> <https://github.com/facebook/react/issues/26126#issuecomment-1422363579>,
+> or unsubscribe
+> <https://github.com/notifications/unsubscribe-auth/ALTV3G6FCM4GWFEYVFXSXZLWWNXTPANCNFSM6AAAAAAUU66TOU>
+> .
+> You are receiving this because you authored the thread.Message ID:
+> ***@***.***>
+>
+",
+            "createdAt": "2023-02-08T10:43:59Z",
+            "id": "IC_kwDOAJy2Ks5Ux_nZ",
+          },
+          Object {
+            "__typename": "IssueComment",
+            "author": Object {
+              "__typename": "User",
+              "login": "arav-ind",
+            },
+            "body": "how about building like this \`\\"homepage\\": \\"http://localhost:45131/test\\"\` ? Does that work?
+",
+            "createdAt": "2023-02-08T10:21:30Z",
+            "id": "IC_kwDOAJy2Ks5Ux4u7",
+          },
+        ],
         "pageInfo": Object {
           "__typename": "PageInfo",
-          "endCursor": null,
-          "hasNextPage": false,
+          "endCursor": "Y3Vyc29yOnYyOpK5MjAyMy0wMi0wOFQxMToyMTozMCswMTowMM5Ux4u7",
+          "hasNextPage": true,
         },
-        "totalCount": 0,
+        "totalCount": 5,
       },
-      "createdAt": "2023-02-12T05:31:50Z",
-      "id": "I_kwDOAJy2Ks5ePiI3",
-      "number": 26156,
+      "createdAt": "2023-02-08T08:50:14Z",
+      "id": "I_kwDOAJy2Ks5d65oG",
+      "number": 26126,
       "state": "CLOSED",
-      "stateReason": "COMPLETED",
-      "title": "Bug: build args parse error on powsershell",
-      "url": "https://github.com/facebook/react/issues/26156",
+      "stateReason": "NOT_PLANNED",
+      "title": "Bug: Failed when set \\"homepage\\" in package.json or set PUBLIC_URL",
+      "url": "https://github.com/facebook/react/issues/26126",
     },
   },
 }
