@@ -8,7 +8,10 @@ const IssueCommentItem: React.FC<{
   comment: IssueComment;
   className?: string;
 }> = ({ comment, className }) => (
-  <div className={classnames('IssueCommentItem', className)}>
+  <div
+    className={classnames('IssueCommentItem', className)}
+    data-testId="IssueCommentItem"
+  >
     <div className="IssueCommentItem-detail">
       <div>{comment.author.login}</div>
       <div>{format(parseISO(comment.createdAt), 'dd.MM.yyyy HH:mm')}</div>

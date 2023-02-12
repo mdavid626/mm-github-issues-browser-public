@@ -5,7 +5,6 @@ import Header from './header';
 
 describe('header', () => {
   afterEach(cleanup);
-  afterEach(jest.resetAllMocks);
 
   it('should render', () => {
     const { asFragment } = renderWithRouter(<Header />);

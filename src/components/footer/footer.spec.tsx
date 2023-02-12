@@ -4,7 +4,6 @@ import Footer from './footer';
 
 describe('footer', () => {
   afterEach(cleanup);
-  afterEach(jest.resetAllMocks);
 
   it('should render', () => {
     const { asFragment } = render(<Footer />);

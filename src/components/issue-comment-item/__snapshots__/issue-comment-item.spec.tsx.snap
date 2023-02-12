@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issue-comment-item should render 1`] = `
+<DocumentFragment>
+  <div
+    class="IssueCommentItem"
+    data-testid="IssueCommentItem"
+  >
+    <div
+      class="IssueCommentItem-detail"
+    >
+      <div>
+        testUser1
+      </div>
+      <div>
+        12.02.2023 10:43
+      </div>
+    </div>
+    <div
+      class="IssueCommentItem-comment"
+    >
+      issue comment 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
