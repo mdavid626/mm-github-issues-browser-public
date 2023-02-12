@@ -1,5 +1,5 @@
 import { Author } from './author';
-import { IssueComment, IssueComments } from './issue-comment';
+import { IssueComments } from './issue-comment';
 import { PageInfo } from './pagination';
 
 export type IssueState = 'OPEN' | 'CLOSED';
