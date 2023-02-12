@@ -16,11 +16,16 @@ import {
   useIssueNumber,
   useIssues,
 } from './issue-hooks';
+import createSearchQueryText from './search-query-text';
 
+jest.mock('./search-query-text');
 describe('issue-hooks', () => {
   beforeEach(() => {
     fetchMock.resetMocks();
     jest.spyOn(window, 'alert').mockReturnValue(undefined);
+    (createSearchQueryText as jest.Mock).mockReturnValue(
+      'repo:facebook/react type:issue in:title test'
+    );
   });
   afterEach(jest.resetAllMocks);
 
@@ -127,6 +132,7 @@ describe('issue-hooks', () => {
       expect(result.current[0]).toMatchSnapshot('query result');
       expect(fetchMock).toHaveBeenCalledTimes(1);
       expect(fetchMock.mock.calls[0]).toMatchSnapshot('query');
+      expect(createSearchQueryText).toHaveBeenCalledWith(testFilters1);
     });
 
     it('should return error when error', async () => {

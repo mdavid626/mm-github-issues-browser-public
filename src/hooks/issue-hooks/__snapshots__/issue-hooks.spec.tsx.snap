@@ -344,7 +344,7 @@ exports[`issue-hooks useIssues should load issues: query 1`] = `
 Array [
   "https://api.github.com/graphql",
   Object {
-    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":null,\\"search\\":\\"repo:facebook/react type:issue state:open (in:title test OR in:body test)\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":null,\\"search\\":\\"repo:facebook/react type:issue in:title test\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
     "headers": Object {
       "accept": "*/*",
       "content-type": "application/json",
@@ -401,7 +401,7 @@ exports[`issue-hooks useIssues should load more issues: query 1`] = `
 Array [
   "https://api.github.com/graphql",
   Object {
-    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":\\"Y3Vyc29yOjI=\\",\\"search\\":\\"repo:facebook/react type:issue state:open (in:title test OR in:body test)\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
+    "body": "{\\"operationName\\":\\"getIssues\\",\\"variables\\":{\\"cursor\\":\\"Y3Vyc29yOjI=\\",\\"search\\":\\"repo:facebook/react type:issue in:title test\\"},\\"query\\":\\"query getIssues($cursor: String, $search: String!) {\\\\n  search(query: $search, after: $cursor, type: ISSUE, first: 10) {\\\\n    issueCount\\\\n    nodes {\\\\n      ... on Issue {\\\\n        id\\\\n        createdAt\\\\n        title\\\\n        state\\\\n        number\\\\n        url\\\\n        author {\\\\n          login\\\\n          __typename\\\\n        }\\\\n        __typename\\\\n      }\\\\n      __typename\\\\n    }\\\\n    pageInfo {\\\\n      hasNextPage\\\\n      endCursor\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\"}",
     "headers": Object {
       "accept": "*/*",
       "content-type": "application/json",
