@@ -1,12 +1,12 @@
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import Routes from '../../router/routes';
 import {
   issuesQueryResult1,
   loadMoreIssuesQueryResult1,
 } from '../../test-data/query-results';
 import { renderWithRouterAndQueryClient } from '../../testing-library/render';
-import IssuesPage from './issues-page';
 
 describe('[Acceptance] issues-page', () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('[Acceptance] issues-page', () => {
   afterEach(jest.resetAllMocks);
 
   it('should render', async () => {
-    renderWithRouterAndQueryClient(<IssuesPage />);
+    renderWithRouterAndQueryClient(<Routes />);
     await screen.findByText('Bug: build args parse error on powsershell');
     expect(
       screen.getByText(
@@ -34,7 +34,7 @@ describe('[Acceptance] issues-page', () => {
   });
 
   it('should be able to load more', async () => {
-    renderWithRouterAndQueryClient(<IssuesPage />);
+    renderWithRouterAndQueryClient(<Routes />);
     await screen.findByText('Bug: build args parse error on powsershell');
     expect(
       screen.getByText(

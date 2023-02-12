@@ -1,12 +1,12 @@
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import Routes from '../../router/routes';
 import {
   commentsQueryResult1,
   issueQueryResult1,
 } from '../../test-data/query-results';
 import { renderWithRouterAndQueryClient } from '../../testing-library/render';
-import IssuePage from './issue-page';
 
 describe('issue-page', () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('issue-page', () => {
   afterEach(jest.resetAllMocks);
 
   it('should render', async () => {
-    renderWithRouterAndQueryClient(<IssuePage />);
+    renderWithRouterAndQueryClient(<Routes />, undefined, ['/issue/26126']);
     await screen.findByText(
       'Bug: Failed when set "homepage" in package.json or set PUBLIC_URL'
     );
@@ -26,7 +26,7 @@ describe('issue-page', () => {
   });
 
   it('should be able to load more comments', async () => {
-    renderWithRouterAndQueryClient(<IssuePage />);
+    renderWithRouterAndQueryClient(<Routes />, undefined, ['/issue/26126']);
     await screen.findByText(
       'Bug: Failed when set "homepage" in package.json or set PUBLIC_URL'
     );
