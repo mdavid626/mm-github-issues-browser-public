@@ -1,5 +1,5 @@
 # MM GitHub Issues Browser
-Simple React app created to browser GitHub Issues. Live demo using GitHub Pages is available at https://mdavid626.github.io/mm-github-issues-browser/.
+Simple React app created to browse GitHub Issues. Live demo using GitHub Pages is available at https://mdavid626.github.io/mm-github-issues-browser/.
 
 The app was developed using the latest version of Node (v18), but should run on older version too.
 
