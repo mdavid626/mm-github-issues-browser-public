@@ -160,7 +160,9 @@ describe('issue-hooks', () => {
       await waitFor(() => {
         expect(result.current[0]).toEqual(expect.any(Object));
       });
-      result.current[3]();
+      act(() => {
+        result.current[3]();
+      });
       await waitFor(() => {
         expect(result.current[0]?.search.nodes).toHaveLength(4);
       });
