@@ -18,4 +18,4 @@ The app has 100% coverage of unit and integration test.
 The app is deployed using GitHub pages. `gh-pages` package handles the deployment by building the app and pushing the files to the `gh-pages` branch. The deployment can be triggered by running npm run deploy.
 
 ## Local development
-Run `npm install` and then `npm start`. You'll need to configure a GitHub personal access token with `public_repo` permission in `src/index.ts` .
+Run `npm install` and then `npm start`. You'll need to configure a GitHub personal access token with `public_repo` permission in `src/index.tsx` .
