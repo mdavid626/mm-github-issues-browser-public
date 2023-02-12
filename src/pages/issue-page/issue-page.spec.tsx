@@ -47,7 +47,10 @@ describe('issue-page', () => {
   });
 
   it('should show error when error', () => {
-    (useIssue as jest.Mock).mockReturnValue([undefined, new Error('test error')]);
+    (useIssue as jest.Mock).mockReturnValue([
+      undefined,
+      new Error('test error'),
+    ]);
     renderWithRouter(<IssuePage />);
     expect(screen.getByText('test error')).toBeVisible();
     expect(Footer).toHaveBeenCalledWith({}, {});
