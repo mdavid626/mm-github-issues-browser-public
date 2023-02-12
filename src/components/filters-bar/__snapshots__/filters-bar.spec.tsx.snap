@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`filters-bar should render 1`] = `
+<DocumentFragment>
+  <div
+    class="FiltersBar"
+  >
+    <select
+      class="FiltersBar-state"
+      data-testid="FiltersBar-state"
+    >
+      <option
+        value=""
+      >
+        All
+      </option>
+      <option
+        value="open"
+      >
+        Open
+      </option>
+      <option
+        value="closed"
+      >
+        Closed
+      </option>
+    </select>
+    <input
+      class="FiltersBar-search"
+      placeholder="Search..."
+      value="test"
+    />
+    <button
+      class="FiltersBar-searchButton"
+      type="button"
+    >
+      Search
+    </button>
+  </div>
+</DocumentFragment>
+`;

@@ -24,6 +24,7 @@ const FiltersBar: React.FC<{
           })
         }
         className="FiltersBar-state"
+        data-testid="FiltersBar-state"
       >
         <option value="">All</option>
         <option value="open">Open</option>
