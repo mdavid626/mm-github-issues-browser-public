@@ -1,6 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
-import { issue1 } from '../../test-data/issues';
+import { testIssue1 } from '../../test-data/issues';
 import IssueComments from '../issue-comments/issue-comments';
 import IssueStateBadge from '../issue-state-badge/issue-state-badge';
 import IssueItem from './issue-item';
@@ -17,11 +17,11 @@ describe('issue-item', () => {
     (IssueStateBadge as jest.Mock).mockReturnValue(
       <div>issue-state-badge</div>
     );
-    const { asFragment } = render(<IssueItem issue={issue1} />);
+    const { asFragment } = render(<IssueItem issue={testIssue1} />);
     expect(asFragment()).toMatchSnapshot();
-    expect(IssueStateBadge).toHaveBeenCalledWith({ state: issue1.state }, {});
+    expect(IssueStateBadge).toHaveBeenCalledWith({ state: testIssue1.state }, {});
     expect(IssueComments).toHaveBeenCalledWith(
-      { issueNumber: issue1.number, comments: issue1.comments },
+      { issueNumber: testIssue1.number, comments: testIssue1.comments },
       {}
     );
   });

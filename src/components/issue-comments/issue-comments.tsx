@@ -8,7 +8,7 @@ const IssueComments: React.FC<{
   issueNumber: number;
   comments: Issue['comments'];
 }> = ({ issueNumber, comments }) => {
-  const [fetchMoreComments, isFetchingMoreComments] =
+  const [fetchMoreComment, isFetchingMoreComment] =
     useFetchMoreIssueComment(issueNumber);
   return (
     <div className="IssueComments">
@@ -24,15 +24,15 @@ const IssueComments: React.FC<{
           ))}
         </div>
       )}
-      {comments.pageInfo.hasNextPage && !isFetchingMoreComments && (
+      {comments.pageInfo.hasNextPage && !isFetchingMoreComment && (
         <div
-          onClick={() => fetchMoreComments(comments.pageInfo.endCursor)}
+          onClick={() => fetchMoreComment(comments.pageInfo.endCursor)}
           className="IssueComments-loadMore"
         >
           load more comments
         </div>
       )}
-      {isFetchingMoreComments && (
+      {isFetchingMoreComment && (
         <div className="IssueComments-loading">loading...</div>
       )}
     </div>
