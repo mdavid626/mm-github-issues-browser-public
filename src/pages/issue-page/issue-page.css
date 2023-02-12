@@ -15,6 +15,7 @@
   gap: var(--space3);
   flex: 1;
   padding: 0 var(--space2);
+  margin: 0 0 var(--space3) 0;
 }
 
 .IssuePage-back {

@@ -35,40 +35,5 @@
   padding: var(--space2);
   margin: 0 0 var(--space3) 0;
   border-radius: 5px;
-}
-
-.IssueItem-commentsTitle {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.IssueItem-comments {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space3);
-}
-
-.IssueItem-comment {
-}
-
-.IssueItem-comment:last-of-type {
-  border-bottom: none;
-  padding: 0;
-}
-
-.IssueItem-loadMore {
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  align-self: center;
-  color: var(--primary-color);
-  margin: 0 0 var(--space2) 0;
-}
-
-.IssueItem-loading {
-  font-size: 18px;
-  font-weight: bold;
-  align-self: center;
-  color: var(--primary-color);
-  margin: 0 0 var(--space3) 0;
+  word-break: break-word;
 }

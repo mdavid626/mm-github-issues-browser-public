@@ -21,4 +21,5 @@
   border: 1px solid var(--secondary-color);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  word-break: break-word;
 }
