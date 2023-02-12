@@ -8,9 +8,9 @@
 }
 
 .IssueStateBadge--closed {
-  background-color: #2da44e;
+  background-color: #df0000;
 }
 
 .IssueStateBadge--open {
-  background-color: #d4c5f9;
+  background-color: #2da44e;
 }
