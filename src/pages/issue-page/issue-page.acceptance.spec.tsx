@@ -31,6 +31,8 @@ describe('issue-page', () => {
       'Bug: Failed when set "homepage" in package.json or set PUBLIC_URL'
     );
     await userEvent.click(screen.getByText('load more comments'));
-    await screen.findByText('arav-ind');
+    await screen.findByText(
+      'Are you using react-router-dom? If yes, try adding the attribute basename'
+    );
   });
 });

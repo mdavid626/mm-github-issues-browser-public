@@ -71,7 +71,7 @@ export const commentsQueryResult1 = {
             {
               id: 'IC_kwDOAJy2Ks5Uxwq-',
               createdAt: '2023-02-08T09:58:14Z',
-              body: "Are you using react-router-dom? If yes, try adding the attribute basename='/test' to BrowserRouter.\r\n\r\n```\r\n<BrowserRouter basename='/test'>\r\n  <Routes>\r\n     <Route>\r\n  </Routes>\r\n</BrowserRouter>\r\n```\r\n",
+              body: 'Are you using react-router-dom? If yes, try adding the attribute basename',
               author: { login: 'arav-ind', __typename: 'User' },
               __typename: 'IssueComment',
             },

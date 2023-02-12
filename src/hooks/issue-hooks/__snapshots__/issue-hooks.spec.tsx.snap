@@ -142,16 +142,7 @@ not work when built and serve it",
               "__typename": "User",
               "login": "arav-ind",
             },
-            "body": "Are you using react-router-dom? If yes, try adding the attribute basename='/test' to BrowserRouter.
-
-\`\`\`
-<BrowserRouter basename='/test'>
-  <Routes>
-     <Route>
-  </Routes>
-</BrowserRouter>
-\`\`\`
-",
+            "body": "Are you using react-router-dom? If yes, try adding the attribute basename",
             "createdAt": "2023-02-08T09:58:14Z",
             "id": "IC_kwDOAJy2Ks5Uxwq-",
           },
