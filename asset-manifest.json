@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mm-github-issues-browser-public/static/css/main.20ab693c.css",
-    "main.js": "/mm-github-issues-browser-public/static/js/main.3e9fbc81.js",
+    "main.js": "/mm-github-issues-browser-public/static/js/main.570baad7.js",
     "static/media/spinner.svg": "/mm-github-issues-browser-public/static/media/spinner.f21531d7169a1bf4384153e3159023b4.svg",
     "index.html": "/mm-github-issues-browser-public/index.html",
     "main.20ab693c.css.map": "/mm-github-issues-browser-public/static/css/main.20ab693c.css.map",
-    "main.3e9fbc81.js.map": "/mm-github-issues-browser-public/static/js/main.3e9fbc81.js.map"
+    "main.570baad7.js.map": "/mm-github-issues-browser-public/static/js/main.570baad7.js.map"
   },
   "entrypoints": [
     "static/css/main.20ab693c.css",
-    "static/js/main.3e9fbc81.js"
+    "static/js/main.570baad7.js"
   ]
 }
