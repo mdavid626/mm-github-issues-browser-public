@@ -8,11 +8,13 @@ import ErrorBoundary from './components/error-boundary/error-boundary';
 import './index.css';
 import Routes from './router/routes';
 
+const base64Token = process.env.REACT_APP_GITHUB_TOKEN_BASE64 || '';
+
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   cache: createApolloMemoryCache(),
   headers: {
-    Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
+    Authorization: `Bearer ${atob(base64Token)}`,
   },
 });
 
