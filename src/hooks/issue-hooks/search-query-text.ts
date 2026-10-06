@@ -6,7 +6,7 @@ const createSearchQueryText = (filters: Filters) => {
     ? `(in:title ${escapedSearch} OR in:body ${escapedSearch})`
     : '';
   const state = filters.state ? `state:${filters.state}` : '';
-  return ['repo:facebook/react', 'type:issue', state, search]
+  return ['repo:react/react', 'type:issue', state, search]
     .filter((item) => item)
     .join(' ');
 };

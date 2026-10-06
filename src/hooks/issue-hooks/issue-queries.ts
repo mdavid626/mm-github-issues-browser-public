@@ -27,7 +27,7 @@ export const GetIssuesQuery = gql`
 
 export const GetIssueQuery = gql`
   query getIssue($issueNumber: Int!) {
-    repository(owner: "facebook", name: "react") {
+    repository(owner: "react", name: "react") {
       id
       issue(number: $issueNumber) {
         id
@@ -63,7 +63,7 @@ export const GetIssueQuery = gql`
 
 export const GetIssueCommentsQuery = gql`
   query getIssueComments($issueNumber: Int!, $commentsCursor: String) {
-    repository(owner: "facebook", name: "react") {
+    repository(owner: "react", name: "react") {
       id
       issue(number: $issueNumber) {
         id

@@ -24,7 +24,7 @@ describe('issue-hooks', () => {
     fetchMock.resetMocks();
     jest.spyOn(window, 'alert').mockReturnValue(undefined);
     (createSearchQueryText as jest.Mock).mockReturnValue(
-      'repo:facebook/react type:issue in:title test'
+      'repo:react/react type:issue in:title test'
     );
   });
   afterEach(jest.resetAllMocks);

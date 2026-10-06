@@ -8,7 +8,7 @@ describe('search-query-text', function () {
       state: 'open',
     };
     expect(createSearchQueryText(filters)).toBe(
-      'repo:facebook/react type:issue state:open (in:title test OR in:body test)'
+      'repo:react/react type:issue state:open (in:title test OR in:body test)'
     );
   });
 
@@ -17,9 +17,7 @@ describe('search-query-text', function () {
       search: '',
       state: null,
     };
-    expect(createSearchQueryText(filters)).toBe(
-      'repo:facebook/react type:issue'
-    );
+    expect(createSearchQueryText(filters)).toBe('repo:react/react type:issue');
   });
 
   it('should escape search', () => {
@@ -28,7 +26,7 @@ describe('search-query-text', function () {
       state: null,
     };
     expect(createSearchQueryText(filters)).toBe(
-      'repo:facebook/react type:issue (in:title tEst123 abc OR in:body tEst123 abc)'
+      'repo:react/react type:issue (in:title tEst123 abc OR in:body tEst123 abc)'
     );
   });
 });
